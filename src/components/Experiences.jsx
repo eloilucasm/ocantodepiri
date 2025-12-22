@@ -92,9 +92,9 @@ const Experiences = () => {
             <p className="text-lg opacity-70 border-l-2 border-[#bebe53] pl-6 mb-8 max-w-md">
                 Curamos cada espaço para refletir a história local, misturando o rústico com a elegância moderna.
             </p>
-            <div className="hidden md:flex items-center gap-4 text-[#bebe53]">
-                 <span className="text-xs uppercase tracking-widest">Arraste para explorar</span>
-                 <ArrowRight className="w-5 h-5 animate-pulse" />
+            <div className="flex items-center gap-4 text-[#bebe53]">
+                 <span className="text-[10px] md:text-xs uppercase tracking-widest">Arraste para explorar</span>
+                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 animate-pulse" />
             </div>
             </div>
         </div>

@@ -22,11 +22,11 @@ const BookingModal = ({ isOpen, onClose }) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed inset-0 m-auto z-[80] w-[90vw] md:w-[500px] h-fit bg-[#f5ece3] p-8 md:p-12 shadow-2xl rounded-sm text-[#69725d]"
+            className="fixed inset-x-4 inset-y-auto m-auto z-[80] md:w-[500px] h-fit bg-[#f5ece3] p-6 md:p-12 shadow-2xl rounded-sm text-[#69725d]"
           >
-            <div className="flex justify-between items-start mb-8">
+            <div className="flex justify-between items-start mb-6 md:mb-8">
               <div>
-                 <h3 className="text-3xl font-serif italic text-[#924032]">Sua Reserva</h3>
+                 <h3 className="text-2xl md:text-3xl font-serif italic text-[#924032]">Sua Reserva</h3>
                  <p className="text-xs uppercase tracking-widest opacity-60 mt-1">Ô Canto de Piri</p>
               </div>
               <button onClick={onClose} className="p-2 hover:bg-[#924032]/10 rounded-full transition-colors">

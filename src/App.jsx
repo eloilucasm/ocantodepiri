@@ -137,37 +137,59 @@ const Layout = () => {
                 <>
                 {/* Navegação - Only show on Home */}
                 {location.pathname === '/' && (
-                <nav className={`fixed w-full z-50 transition-all duration-700 px-6 py-6 lg:px-12 flex justify-between items-center ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent'}`}>
-                    <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex items-center gap-2 group cursor-pointer"
-                    data-cursor="hover"
-                    onClick={() => navigate('/')}
-                    >
-                    <BrandSymbol className="h-12 w-auto" />
-                    </motion.div>
+                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent'}`}>
+                    <div className="w-full md:w-auto flex justify-between items-center">
+                        <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="flex items-center gap-2 group cursor-pointer"
+                        data-cursor="hover"
+                        onClick={() => navigate('/')}
+                        >
+                        <BrandSymbol className="h-10 md:h-12 w-auto" />
+                        </motion.div>
 
-                    {/* House Switcher - Centered or near brand */}
-                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
+                        {/* Mobile Menu Button (moves to right on mobile) */}
+                        <div className="md:hidden">
+                            <Magnetic>
+                            <motion.button 
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            onClick={() => setIsMenuOpen(true)}
+                            className="flex flex-col items-end group gap-1 outline-none p-2"
+                            data-cursor="hover"
+                            >
+                            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
+                            <div className="w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
+                            </motion.button>
+                            </Magnetic>
+                        </div>
+                    </div>
+
+                    {/* House Switcher - Centered */}
+                    <div className="flex justify-center">
                         <HouseSwitcher />
                     </div>
                     
-                    <Magnetic>
-                    <motion.button 
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    onClick={() => setIsMenuOpen(true)}
-                    className="flex flex-col items-end group gap-1 outline-none p-4"
-                    data-cursor="hover"
-                    >
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
-                    <div className="w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
-                    <div className="w-5 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-8"></div>
-                    </motion.button>
-                    </Magnetic>
+                    {/* Desktop Menu Button */}
+                    <div className="hidden md:block">
+                        <Magnetic>
+                        <motion.button 
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        onClick={() => setIsMenuOpen(true)}
+                        className="flex flex-col items-end group gap-1 outline-none p-4"
+                        data-cursor="hover"
+                        >
+                        <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
+                        <div className="w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
+                        <div className="w-5 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-8"></div>
+                        </motion.button>
+                        </Magnetic>
+                    </div>
                 </nav>
                 )}
 
@@ -267,7 +289,7 @@ const Layout = () => {
                                         whileInView={{ y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-                                        className="text-5xl md:text-[8rem] font-serif leading-[0.9] tracking-tighter" style={{ color: colors.deepGreen }}
+                                        className="text-4xl md:text-[8rem] font-serif leading-[1.1] md:leading-[0.9] tracking-tighter" style={{ color: colors.deepGreen }}
                                         >
                                             Reserve seu <br /> <span className="text-[#924032] italic">canto de paz</span>.
                                         </motion.h2>
@@ -295,8 +317,8 @@ const Layout = () => {
 
                 {/* Rodapé - Fixed & Revealed */}
                 <div ref={footerRef} className="fixed bottom-0 left-0 w-full z-0">
-                    <footer className="py-20 px-6 lg:px-24 border-t border-[#924032]/10" style={{ backgroundColor: colors.cream }}>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8">
+                    <footer className="py-12 md:py-20 px-6 lg:px-24 border-t border-[#924032]/10" style={{ backgroundColor: colors.cream }}>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
                         <div className="md:col-span-2 space-y-8">
                             <div className="flex items-center gap-2">
                             <BrandSymbol className="h-12 w-auto" />

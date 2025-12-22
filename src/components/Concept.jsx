@@ -11,9 +11,9 @@ const Concept = () => {
   const conceptImgY = useTransform(conceptY, [0, 1], ["-10%", "10%"]);
 
   return (
-    <section ref={conceptRef} className="py-24 md:py-48 px-6 lg:px-24 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-32 items-center">
-        <div className="space-y-8">
+    <section ref={conceptRef} className="py-16 md:py-48 px-6 lg:px-24 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-32 items-center">
+        <div className="space-y-6 md:space-y-8">
             <motion.div 
             key={currentHouse.id}
             initial={{ opacity: 0, x: -50 }}
@@ -21,11 +21,11 @@ const Concept = () => {
             viewport={{ once: true, margin: "-20%" }}
             transition={{ duration: 1, ease: "easeOut" }}
             >
-            <p className="text-[#924032] font-bold uppercase tracking-widest text-xs mb-4">{currentHouse.concept.subtitle}</p>
-            <h2 className="text-4xl md:text-7xl font-serif leading-[1.1] mb-8">
+            <p className="text-[#924032] font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4">{currentHouse.concept.subtitle}</p>
+            <h2 className="text-3xl md:text-7xl font-serif leading-[1.1] mb-6 md:mb-8">
                 {currentHouse.concept.title}
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed opacity-80 mb-10">
+            <p className="text-base md:text-xl leading-relaxed opacity-80 mb-8 md:mb-10">
                 {currentHouse.concept.description}
             </p>
             <button className="flex items-center gap-4 group text-sm font-bold uppercase tracking-widest" data-cursor="hover">
