@@ -7,7 +7,7 @@ const HouseSwitcher = () => {
   const { currentHouseId, switchHouse, houses, isTransitioning } = useHouse();
 
   return (
-    <div className="flex bg-white/10 backdrop-blur-md rounded-full p-1 border border-[#924032]/20 pointer-events-auto">
+    <div className="flex bg-white/10 md:bg-white/10 backdrop-blur-md rounded-full p-0.5 md:p-1 border border-[#924032]/20 pointer-events-auto">
       {Object.values(houses).map((house) => {
         const isActive = currentHouseId === house.id;
         return (
@@ -16,7 +16,7 @@ const HouseSwitcher = () => {
             onClick={() => switchHouse(house.id)}
             disabled={isTransitioning}
             className={`
-              relative px-3 py-1.5 md:px-4 md:py-2 text-[9px] md:text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-500
+              relative px-2.5 py-1 md:px-4 md:py-2 text-[8px] md:text-xs uppercase tracking-widest font-bold rounded-full transition-all duration-500
               ${isActive ? 'text-[#f5ece3]' : 'text-[#69725d] hover:text-[#924032]'}
             `}
           >

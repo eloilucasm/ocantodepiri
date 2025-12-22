@@ -137,57 +137,40 @@ const Layout = () => {
                 <>
                 {/* Navegação - Only show on Home */}
                 {location.pathname === '/' && (
-                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent'}`}>
-                    <div className="w-full md:w-auto flex justify-between items-center">
-                        <motion.div 
+                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent'}`}>
+                    
+                    {/* Logo */}
+                    <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex items-center gap-2 group cursor-pointer"
+                        className="flex items-center gap-2 group cursor-pointer flex-shrink-0"
                         data-cursor="hover"
                         onClick={() => navigate('/')}
-                        >
-                        <BrandSymbol className="h-10 md:h-12 w-auto" />
-                        </motion.div>
-
-                        {/* Mobile Menu Button (moves to right on mobile) */}
-                        <div className="md:hidden">
-                            <Magnetic>
-                            <motion.button 
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            onClick={() => setIsMenuOpen(true)}
-                            className="flex flex-col items-end group gap-1 outline-none p-2"
-                            data-cursor="hover"
-                            >
-                            <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
-                            <div className="w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
-                            </motion.button>
-                            </Magnetic>
-                        </div>
-                    </div>
+                    >
+                        <BrandSymbol className="h-8 md:h-12 w-auto" />
+                    </motion.div>
 
                     {/* House Switcher - Centered */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center order-2 md:order-none scale-90 md:scale-100">
                         <HouseSwitcher />
                     </div>
                     
-                    {/* Desktop Menu Button */}
-                    <div className="hidden md:block">
+                    {/* Menu Button */}
+                    <div className="order-3">
                         <Magnetic>
-                        <motion.button 
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        onClick={() => setIsMenuOpen(true)}
-                        className="flex flex-col items-end group gap-1 outline-none p-4"
-                        data-cursor="hover"
-                        >
-                        <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
-                        <div className="w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
-                        <div className="w-5 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-8"></div>
-                        </motion.button>
+                            <motion.button 
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                onClick={() => setIsMenuOpen(true)}
+                                className="flex flex-col items-end group gap-1 outline-none p-2 md:p-4"
+                                data-cursor="hover"
+                            >
+                                <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Menu</span>
+                                <div className="w-6 md:w-8 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-12"></div>
+                                <div className="hidden md:block w-5 h-[2px] bg-[#924032] transition-all duration-300 group-hover:w-8"></div>
+                            </motion.button>
                         </Magnetic>
                     </div>
                 </nav>

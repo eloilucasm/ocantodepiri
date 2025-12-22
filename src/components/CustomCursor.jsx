@@ -5,8 +5,14 @@ import { motion } from 'framer-motion';
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Detect mobile/touch
+    const checkMobile = () => {
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkMobile();
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -28,9 +34,11 @@ const CustomCursor = () => {
     };
   }, []);
 
+  if (isMobile) return null;
+
   return (
     <motion.div
-      className="fixed top-0 left-0 w-4 h-4 rounded-full bg-[#924032] pointer-events-none z-[100] mix-blend-difference"
+      className="fixed top-0 left-0 w-4 h-4 rounded-full bg-[#924032] pointer-events-none z-[100] mix-blend-difference hidden md:block"
       animate={{
         x: mousePosition.x - 8,
         y: mousePosition.y - 8,
