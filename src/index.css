@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    cursor: none; /* Hide default cursor */
+  }
+  
+  /* Fallback for devices without fine pointer */
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+  }
+}
+
+/* Custom Scrollbar for non-Lenis instances if needed, though we hide it generally */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
