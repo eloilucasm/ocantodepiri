@@ -17,7 +17,7 @@ const ExperienceCard = ({ item }) => {
                     src={item.img} 
                     alt={item.title}
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale transition-all duration-700 pointer-events-none"
+                    className="w-full h-full object-cover md:grayscale grayscale-0 transition-all duration-700 pointer-events-none"
                     variants={{
                         hover: { scale: 1.05, filter: "grayscale(0%)" }
                     }}

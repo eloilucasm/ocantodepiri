@@ -39,11 +39,11 @@ const Concept = () => {
         
         <div className="relative">
             <motion.div 
-            initial={{ clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            whileInView={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-            viewport={{ once: true, margin: "-20%" }}
-            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-            className="rounded-t-full overflow-hidden aspect-[4/5] shadow-3xl group relative"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+            className="rounded-t-full overflow-hidden aspect-[4/5] shadow-3xl group relative origin-top"
             >
             <AnimatePresence mode="wait">
             <motion.img 
