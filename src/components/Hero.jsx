@@ -69,7 +69,7 @@ const Hero = () => {
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="w-[75vw] md:w-[30vw] max-w-2xl h-auto object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.35)] will-change-transform"
+            className="w-[75vw] md:w-[30vw] max-w-2xl h-auto object-contain will-change-transform"
             />
         </div>
 
