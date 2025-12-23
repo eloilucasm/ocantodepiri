@@ -4,6 +4,7 @@ export const houses = {
   casa1: {
     id: 'casa1',
     name: 'Casa Villa',
+    modalImage: '/casavilla.webp',
     hero: {
       image: '/hero.webp',
       subtitle: 'Pirenópolis, Goiás',
@@ -48,8 +49,9 @@ export const houses = {
   'casa-jardim': {
     id: 'casa-jardim',
     name: 'Casa Jardim',
+    modalImage: '/casajardim.webp',
     hero: {
-      image: '/piscina2.webp', // Placeholder: using a different image to show change
+      image: '/piscina2.webp', // Back to original placeholder
       subtitle: 'Refúgio Natural',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/1035663779596246726?guests=1&adults=1&s=67&unique_share_id=4e9fc871-1b21-4ab2-86a4-cfa30557e33c',
