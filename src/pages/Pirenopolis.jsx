@@ -157,7 +157,7 @@ const Pirenopolis = () => {
       </section>
 
       {/* Gastronomy & Culture */}
-      <section className="bg-[#69725d] text-[#f5ece3] py-32 px-6 lg:px-24 rounded-t-[3rem] -mx-2 md:mx-0">
+      <section className="bg-[#69725d] text-[#f5ece3] py-32 px-6 lg:px-24 rounded-t-[3rem] mx-0">
          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
             <div>
                <h3 className="text-[#bebe53] text-xs font-bold uppercase tracking-[0.3em] mb-4">Viver & Saborear</h3>

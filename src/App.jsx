@@ -15,9 +15,10 @@ import Experiences from './components/Experiences';
 import BrandSymbol from './components/BrandSymbol';
 import AudioPlayer from './components/AudioPlayer';
 import Magnetic from './components/Magnetic';
-import { HouseProvider } from './context/HouseContext';
+import { HouseProvider, useHouse } from './context/HouseContext';
 import HouseSwitcher from './components/HouseSwitcher';
 const Pirenopolis = React.lazy(() => import('./pages/Pirenopolis'));
+const Amenities = React.lazy(() => import('./pages/Amenities'));
 
 const colors = {
   cream: '#f5ece3',
@@ -29,6 +30,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from
 
 // Layout and Global Logic
 const Layout = () => {
+    const { currentHouse } = useHouse();
     const location = useLocation();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -41,7 +43,7 @@ const Layout = () => {
 
     const menuItems = [
         { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') }, 
-        { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('gallery') }, 
+        { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
         { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
     ];
@@ -121,11 +123,13 @@ const Layout = () => {
               }
           } else if (target === 'pirenopolis') {
               navigate('/pirenopolis');
+          } else if (target === 'amenidades') {
+              navigate('/amenidades');
           }
       };
 
       return (
-        <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
+        <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white overflow-x-hidden" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
             <Preloader onComplete={() => setLoading(false)} />
             <CustomCursor />
@@ -192,8 +196,8 @@ const Layout = () => {
                             <BrandSymbol className="h-10 w-auto" />
                             </div>
                             <Magnetic>
-                            <button onClick={() => setIsMenuOpen(false)} className="group p-4 border border-[#f5ece3]/20 rounded-full hover:bg-[#f5ece3]/10 transition-colors" data-cursor="hover">
-                            <X size={32} className="transition-transform duration-500 group-hover:rotate-90" />
+                            <button onClick={() => setIsMenuOpen(false)} className="w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center border border-[#f5ece3]/20 rounded-full hover:bg-[#f5ece3]/10 transition-colors group" data-cursor="hover">
+                            <X size={24} className="transition-transform duration-500 group-hover:rotate-90" />
                             </button>
                             </Magnetic>
                         </div>
@@ -216,9 +220,9 @@ const Layout = () => {
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-8 text-xs uppercase tracking-widest border-t border-white/20 pt-8">
-                            <a href="#" className="hover:opacity-60 transition-opacity" data-cursor="hover">Instagram</a>
+                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">Instagram</a>
                             <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">WhatsApp</a>
-                            <a href="#" className="hover:opacity-60 transition-opacity" data-cursor="hover">Localização</a>
+                            <a href={currentHouse.hero.mapLink} target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">Localização</a>
                         </div>
                         </div>
                         
@@ -280,7 +284,7 @@ const Layout = () => {
                                     <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-10">
                                         <button 
                                             onClick={() => setIsBookingOpen(true)}
-                                            className="px-12 py-6 bg-[#924032] text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#69725d] transition-all duration-500 hover:scale-105"
+                                            className="w-[260px] px-6 py-6 bg-[#924032] text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#69725d] transition-all duration-500 hover:scale-105 text-center whitespace-nowrap"
                                             data-cursor="hover"
                                         >
                                         Consultar Datas
@@ -289,7 +293,7 @@ const Layout = () => {
                                             href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
-                                            className="px-12 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center" 
+                                            className="w-[260px] px-6 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center whitespace-nowrap" 
                                             data-cursor="hover"
                                         >
                                         Falar no WhatsApp
@@ -300,6 +304,7 @@ const Layout = () => {
                             </>
                         } />
                         <Route path="/pirenopolis" element={<Pirenopolis />} />
+                        <Route path="/amenidades" element={<Amenities />} />
                     </Routes>
                     </React.Suspense>
                 </div>
@@ -321,15 +326,19 @@ const Layout = () => {
                             <h5 className="text-[10px] uppercase tracking-widest font-black opacity-40">Contato</h5>
                             <div className="space-y-4 text-sm font-bold tracking-tight">
                             <p className="hover:text-[#924032] cursor-pointer" data-cursor="hover">(62) 99655-8022</p>
-                            <p className="hover:text-[#924032] cursor-pointer" data-cursor="hover">@ocantodepiri</p>
+                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer block" data-cursor="hover">{currentHouse.hero.instaHandle}</a>
                             <p>R. Cedro Santa Luzia, Pirenópolis GO</p>
                             </div>
                         </div>
                         
                         <div className="flex flex-col justify-between items-end text-right">
                             <div className="flex gap-6">
-                            <Instagram className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover" />
-                            <Phone className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover" />
+                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover">
+                                <Instagram size={24} />
+                            </a>
+                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover">
+                                <Phone size={24} />
+                            </a>
                             </div>
                             <div className="mt-12 md:mt-0">
                             <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">© 2025 Ô Canto de Piri</p>

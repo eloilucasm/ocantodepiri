@@ -69,7 +69,7 @@ const Hero = () => {
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="w-[40vw] md:w-[30vw] max-w-2xl h-auto object-contain drop-shadow-lg"
+            className="w-[75vw] md:w-[30vw] max-w-2xl h-auto object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.25)] drop-shadow-[0_35px_35px_rgba(0,0,0,0.2)]"
             />
         </div>
 
@@ -79,7 +79,7 @@ const Hero = () => {
             transition={{ delay: 1.8 }}
             className="mt-16 flex flex-col items-center gap-4"
         >
-            <div className="w-1px] h-24 bg-[#924032] origin-top scale-y-100 animate-pulse" />
+            <div className="w-[1px] h-24 bg-[#924032] origin-top scale-y-100 animate-pulse" />
             <span className="text-[9px] uppercase tracking-[0.3em] vertical-rl">{currentHouse.hero.scrollText}</span>
         </motion.div>
         </div>

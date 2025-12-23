@@ -7,8 +7,11 @@ export const houses = {
     hero: {
       image: '/hero.webp',
       subtitle: 'Pirenópolis, Goiás',
-      scrollText: 'Role para respirar',
-      bookingLink: 'https://www.airbnb.com.sg/rooms/51765912?source_impression_id=p3_1766451710_P3SosKO6DErHBi9x'
+      scrollText: 'Deslize para conhecer',
+      bookingLink: 'https://www.airbnb.com.br/rooms/51765912?guests=1&adults=1&s=67&unique_share_id=5450d026-b60d-400d-b643-c1540a688a51',
+      mapLink: 'https://maps.app.goo.gl/XrEgJbWkhjPDm9Tz5',
+      instaLink: 'https://www.instagram.com/ocantodepiri/',
+      instaHandle: '@ocantodepiri'
     },
     concept: {
       subtitle: 'O Conceito',
@@ -25,7 +28,22 @@ export const houses = {
       { title: 'Sol e Braza', desc: 'Churrasco e bons momentos.', img: '/churrasqueira.webp' },
       { title: 'Piscina', desc: 'Refrescância e lazer.', img: '/piscina2.webp' },
       { title: 'Para toda família', desc: 'Espaço para todos.', img: '/familia.webp' },
-    ]
+    ],
+    amenities: {
+      "Vistas panorâmicas": ["Vista para as montanhas"],
+      "Banheiro": ["Água quente"],
+      "Quarto e lavanderia": ["Cabides", "Roupa de cama", "Blackout nas cortinas", "Varal para secar roupas", "Local para guardar as roupas: cômoda"],
+      "Entretenimento": ["TV", "Sistema de som com Bluetooth", "Mesa de bilhar"],
+      "Climatização": ["Ar-condicionado portátil", "Ar-condicionado split", "Ventiladores portáteis"],
+      "Segurança doméstica": ["Câmeras de segurança na parte externa da propriedade", "Monitoramento 24h (4 câmeras: entrada, rua, garagem e lazer)"],
+      "Internet e escritório": ["Wi-Fi"],
+      "Cozinha e sala de jantar": ["Cozinha", "Espaço onde os hóspedes podem preparar suas próprias refeições", "Refrigerador", "Microondas", "Louças e talheres", "Tigelas, hashi, pratos, copos, etc.", "Freezer", "Fogão elétrico", "Forno normal de aço inoxidável", "Cafeteira", "Taças de vinho", "Assadeira", "Liquidificador", "Mesa de jantar", "Máquina de pão"],
+      "Características da localização": ["Entrada privada", "Entrada por outra rua ou prédio"],
+      "Ar livre": ["Pátio ou varanda (Privativa)", "Quintal privado — totalmente cercado", "Móveis externos", "Rede", "Área de jantar externa", "Churrasqueira privativa: a carvão"],
+      "Estacionamento e instalações": ["Estacionamento incluído", "Estacionamento gratuito na rua", "Piscina privativa - disponível o ano todo, aquecida"],
+      "Serviços": ["Permitido animais", "Animas de assistência sempre são permitidos", "O anfitrião recebe você"],
+      "Não incluso": ["Máquina de Lavar", "Secadora", "Básico", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
+    }
   },
   'casa-jardim': {
     id: 'casa-jardim',
@@ -33,8 +51,11 @@ export const houses = {
     hero: {
       image: '/piscina2.webp', // Placeholder: using a different image to show change
       subtitle: 'Refúgio Natural',
-      scrollText: 'Descubra a paz',
-      bookingLink: 'https://www.airbnb.com.sg/rooms/1035663779596246726?source_impression_id=p3_1766451619_P3DNadaMO9LsE5yG'
+      scrollText: 'Deslize para conhecer',
+      bookingLink: 'https://www.airbnb.com.br/rooms/1035663779596246726?guests=1&adults=1&s=67&unique_share_id=4e9fc871-1b21-4ab2-86a4-cfa30557e33c',
+      mapLink: 'https://maps.app.goo.gl/dugy7GJ1n8dfnTNQ9',
+      instaLink: 'https://www.instagram.com/ocantodepiri2/',
+      instaHandle: '@ocantodepiri2'
     },
     concept: {
       subtitle: 'A Experiência',
@@ -51,6 +72,20 @@ export const houses = {
       { title: 'Fogueira', desc: 'Histórias ao luar.', img: '/churrasqueira.webp' },
       { title: 'Suíte Jardim', desc: 'Acorde com os pássaros.', img: '/suitemaster.webp' },
       { title: 'Área Kids', desc: 'Liberdade para brincar.', img: '/jogos.webp' },
-    ]
+    ],
+    amenities: {
+      "Vistas panorâmicas": ["Vista para o horizonte da cidade", "Vista para as montanhas", "Vista para a piscina"],
+      "Banheiro": ["Água quente"],
+      "Quarto e lavanderia": ["Cabides", "Roupa de cama", "Cobertores e travesseiros extras", "Blackout nas cortinas", "Ferro de passar", "Varal para secar roupas", "Local para guardar as roupas: guarda-roupa e cômoda"],
+      "Entretenimento": ["TV", "Mesa de bilhar"],
+      "Climatização": ["Ar-condicionado central"],
+      "Segurança doméstica": ["Extintor de incêndio"],
+      "Internet e escritório": ["Wi-Fi"],
+      "Cozinha e sala de jantar": ["Cozinha", "Espaço onde os hóspedes podem preparar suas próprias refeições", "Refrigerador", "Microondas", "Louças e talheres", "Tigelas, hashi, pratos, copos, etc.", "Freezer", "Fogão a gás", "Forno normal Suggar", "Cafeteira: cafeteira com coador", "Taças de vinho", "Assadeira", "Liquidificador", "Mesa de jantar"],
+      "Ar livre": ["Pátio ou varanda (Privativa)", "Quintal privado — totalmente cercado", "Móveis externos", "Rede", "Área de jantar externa", "Churrasqueira", "Cadeira espreguiçadeira"],
+      "Estacionamento e instalações": ["Estacionamento incluído", "Estacionamento gratuito na rua", "Piscina privativa - aquecida"],
+      "Serviços": ["Permitido animais", "Animas de assistência sempre são permitidos", "Permitido fumar", "Estadias de longa duração são permitidas (28 dias ou mais)", "O anfitrião recebe você"],
+      "Não incluso": ["Máquina de Lavar", "Secadora", "Básico", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
+    }
   }
 };
