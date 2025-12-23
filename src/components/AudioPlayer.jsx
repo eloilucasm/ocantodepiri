@@ -73,7 +73,7 @@ const AudioPlayer = () => {
                             delay: i * 0.6,
                             ease: "easeOut"
                         }}
-                        className="absolute w-full h-full rounded-full border border-[#924032]/30 bg-[#924032]/5"
+                        className="absolute w-full h-full rounded-full border border-[#924032]/30 bg-[#924032]/5 will-change-[transform,opacity]"
                     />
                 ))}
             </motion.div>

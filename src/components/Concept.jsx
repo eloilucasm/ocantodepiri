@@ -43,7 +43,7 @@ const Concept = () => {
             whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0% round 0px)" }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-t-full overflow-hidden aspect-[2/3] shadow-3xl group relative"
+            className="rounded-t-full overflow-hidden aspect-[2/3] shadow-3xl group relative will-change-[clip-path,opacity]"
             >
             <AnimatePresence mode="wait">
             <motion.img 

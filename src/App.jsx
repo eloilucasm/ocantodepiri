@@ -89,9 +89,11 @@ const Layout = () => {
     
         const lenis = new Lenis({
           duration: 1.2,
+          lerp: 0.1, // Smooth out interpolation
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           direction: 'vertical',
           smooth: true,
+          smoothTouch: false, // Mobile native scroll is often smoother for touch
         });
     
         function raf(time) {
