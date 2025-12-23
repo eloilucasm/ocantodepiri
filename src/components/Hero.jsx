@@ -12,7 +12,7 @@ const Hero = () => {
   const heroOpacity = useTransform(heroYSpring, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={heroRef} className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
+    <section ref={heroRef} className="relative h-dvh flex flex-col justify-center items-center overflow-hidden">
         <motion.div 
           style={{ y: heroParallax, opacity: heroOpacity }}
           className="absolute inset-0 z-0 bg-[#f5ece3]"

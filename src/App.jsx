@@ -40,10 +40,10 @@ const Layout = () => {
     const [footerHeight, setFooterHeight] = useState(0);
 
     const menuItems = [
-        { label: 'A Casa', img: '/cozinha.avif', action: () => handleNavigation('gallery') }, 
-        { label: 'Amenidades', img: '/piscina2.avif', action: () => handleNavigation('gallery') }, 
-        { label: 'Pirenópolis', img: '/hero.avif', action: () => handleNavigation('pirenopolis') }, 
-        { label: 'Reservar', img: '/suitemaster.avif', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
+        { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') }, 
+        { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('gallery') }, 
+        { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
+        { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
     ];
 
     // Auto-rotate images when menu is open
@@ -125,7 +125,7 @@ const Layout = () => {
       };
 
       return (
-        <div className="min-h-screen font-sans selection:bg-[#924032] selection:text-white" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
+        <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
             <Preloader onComplete={() => setLoading(false)} />
             <CustomCursor />
@@ -139,12 +139,12 @@ const Layout = () => {
                 {location.pathname === '/' && (
                 <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent'}`}>
                     
-                    {/* Logo */}
+                    {/* Logo - min-w-0 to prevent flex squash */}
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex items-center gap-2 group cursor-pointer flex-shrink-0"
+                        className="flex items-center gap-2 group cursor-pointer flex-shrink-0 min-w-0"
                         data-cursor="hover"
                         onClick={() => navigate('/')}
                     >
@@ -205,7 +205,7 @@ const Layout = () => {
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
                                 transition={{ delay: 0.3 + (i * 0.1), duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                                className="text-5xl md:text-9xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-white/60 transition-all duration-500 w-fit"
+                                className="text-5xl md:text-9xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-[#bebe53] transition-all duration-500 w-fit"
                                 data-cursor="hover"
                                 onClick={item.action}
                                 >
@@ -217,7 +217,7 @@ const Layout = () => {
 
                         <div className="flex flex-col md:flex-row gap-8 text-xs uppercase tracking-widest border-t border-white/20 pt-8">
                             <a href="#" className="hover:opacity-60 transition-opacity" data-cursor="hover">Instagram</a>
-                            <a href="#" className="hover:opacity-60 transition-opacity" data-cursor="hover">WhatsApp</a>
+                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">WhatsApp</a>
                             <a href="#" className="hover:opacity-60 transition-opacity" data-cursor="hover">Localização</a>
                         </div>
                         </div>
@@ -285,9 +285,15 @@ const Layout = () => {
                                         >
                                         Consultar Datas
                                         </button>
-                                        <button className="px-12 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500" data-cursor="hover">
+                                        <a 
+                                            href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="px-12 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center" 
+                                            data-cursor="hover"
+                                        >
                                         Falar no WhatsApp
-                                        </button>
+                                        </a>
                                     </div>
                                     </div>
                                 </section>

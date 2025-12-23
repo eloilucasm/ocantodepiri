@@ -8,7 +8,7 @@ import { useHouse } from '../context/HouseContext';
 const ExperienceCard = ({ item }) => {
     return (
         <motion.div 
-            className="min-w-[80vw] md:min-w-[500px] snap-center group relative block"
+            className="w-[80vw] md:w-[500px] snap-center group relative block flex-shrink-0"
             whileHover="hover"
         >
             <div className="aspect-[3/4] overflow-hidden mb-6 rounded-sm relative bg-black/20">

@@ -2,8 +2,11 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, MessageCircle } from 'lucide-react';
+import { useHouse } from '../context/HouseContext';
 
 const BookingModal = ({ isOpen, onClose }) => {
+  const { currentHouse } = useHouse();
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -26,7 +29,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           >
             <div className="flex justify-between items-start mb-6 md:mb-8">
               <div>
-                 <h3 className="text-2xl md:text-3xl font-serif italic text-[#924032]">Sua Reserva</h3>
+                 <h3 className="text-2xl md:text-3xl font-serif italic text-[#924032]">Faça sua reserva</h3>
                  <p className="text-xs uppercase tracking-widest opacity-60 mt-1">Ô Canto de Piri</p>
               </div>
               <button onClick={onClose} className="p-2 hover:bg-[#924032]/10 rounded-full transition-colors">
@@ -35,7 +38,12 @@ const BookingModal = ({ isOpen, onClose }) => {
             </div>
 
             <div className="space-y-6">
-                <div className="p-6 bg-white/50 border border-[#924032]/10 rounded-sm hover:border-[#924032]/30 transition-colors cursor-pointer group">
+                <a 
+                  href={currentHouse.hero.bookingLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-6 bg-white/50 border border-[#924032]/10 rounded-sm hover:border-[#924032]/30 transition-colors cursor-pointer group block"
+                >
                     <div className="flex items-center gap-4">
                         <div className="bg-[#924032]/10 p-3 rounded-full text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors">
                             <Calendar size={20} />
@@ -45,9 +53,14 @@ const BookingModal = ({ isOpen, onClose }) => {
                             <p className="text-sm opacity-70">Consulte datas no Airbnb</p>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <div className="p-6 bg-white/50 border border-[#924032]/10 rounded-sm hover:border-[#924032]/30 transition-colors cursor-pointer group">
+                <a 
+                  href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-6 bg-white/50 border border-[#924032]/10 rounded-sm hover:border-[#924032]/30 transition-colors cursor-pointer group block"
+                >
                      <div className="flex items-center gap-4">
                         <div className="bg-[#25D366]/10 p-3 rounded-full text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors">
                             <MessageCircle size={20} />
@@ -57,12 +70,10 @@ const BookingModal = ({ isOpen, onClose }) => {
                             <p className="text-sm opacity-70">Atendimento personalizado</p>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-[#924032]/10 text-center">
-                <p className="text-xs opacity-50 italic">"Estamos ansiosos para te receber."</p>
-            </div>
+
 
           </motion.div>
         </>
