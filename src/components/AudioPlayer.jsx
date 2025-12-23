@@ -12,7 +12,7 @@ const AudioPlayer = () => {
   useEffect(() => {
     // Attempt play immediately (will likely fail, but worth a shot)
     if (audioRef.current) {
-        audioRef.current.volume = 0.35;
+        audioRef.current.volume = 0.22;
         audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
 
