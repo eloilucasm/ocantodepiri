@@ -1,15 +1,17 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BrandSymbol = ({ className, filled = false }) => {
   const src = filled ? '/janelapreenchida.svg' : '/logo2.svg';
   
   return (
-    <img 
-      src={src} 
-      alt="Ô Canto de Piri" 
-      className={className}
-      style={{ display: 'block' }} 
-    />
+    <Link to="/" className="block">
+      <img 
+        src={src} 
+        alt="Ô Canto de Piri" 
+        className={className}
+        style={{ display: 'block' }} 
+      />
+    </Link>
   );
 };
 

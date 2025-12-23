@@ -57,7 +57,7 @@ const Preloader = ({ onComplete }) => {
                     transition={{ delay: 1.8, duration: 0.8 }}
                     className="flex flex-col items-center gap-4"
                 >
-                    <span className="text-[#924032] tracking-[0.2em] text-sm md:text-base font-light italic">Preparando seu aconchego</span>
+                    <span className="text-[#924032] tracking-widest text-sm md:text-base font-light">Preparando seu aconchego</span>
                     <div className="flex gap-2">
                         {[0, 1, 2].map((i) => (
                             <motion.div

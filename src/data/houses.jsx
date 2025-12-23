@@ -42,7 +42,7 @@ export const houses = {
       "Ar livre": ["Pátio ou varanda (Privativa)", "Quintal privado — totalmente cercado", "Móveis externos", "Rede", "Área de jantar externa", "Churrasqueira privativa: a carvão"],
       "Estacionamento e instalações": ["Estacionamento incluído", "Estacionamento gratuito na rua", "Piscina privativa - disponível o ano todo, aquecida"],
       "Serviços": ["Permitido animais", "Animas de assistência sempre são permitidos", "O anfitrião recebe você"],
-      "Não incluso": ["Máquina de Lavar", "Secadora", "Básico", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
+      "Não incluso": ["Máquina de Lavar", "Secadora", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
     }
   },
   'casa-jardim': {
@@ -85,7 +85,7 @@ export const houses = {
       "Ar livre": ["Pátio ou varanda (Privativa)", "Quintal privado — totalmente cercado", "Móveis externos", "Rede", "Área de jantar externa", "Churrasqueira", "Cadeira espreguiçadeira"],
       "Estacionamento e instalações": ["Estacionamento incluído", "Estacionamento gratuito na rua", "Piscina privativa - aquecida"],
       "Serviços": ["Permitido animais", "Animas de assistência sempre são permitidos", "Permitido fumar", "Estadias de longa duração são permitidas (28 dias ou mais)", "O anfitrião recebe você"],
-      "Não incluso": ["Máquina de Lavar", "Secadora", "Básico", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
+      "Não incluso": ["Máquina de Lavar", "Secadora", "Detector de fumaça", "Alarme de monóxido de carbono", "Aquecimento"]
     }
   }
 };

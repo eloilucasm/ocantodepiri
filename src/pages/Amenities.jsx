@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { 
   Mountain, 
   Droplets, 
@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { useHouse } from '../context/HouseContext';
 import Magnetic from '../components/Magnetic';
 import BrandSymbol from '../components/BrandSymbol';
+import HouseSwitcher from '../components/HouseSwitcher';
 
 const categoryIcons = {
   "Vistas panorâmicas": <Mountain size={20} />,
@@ -38,7 +39,7 @@ const categoryIcons = {
 };
 
 const AmenitySection = ({ title, items, index }) => (
-  <motion.div 
+  <Motion.div  
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ delay: index * 0.1, duration: 0.8 }}
@@ -59,7 +60,7 @@ const AmenitySection = ({ title, items, index }) => (
         </li>
       ))}
     </ul>
-  </motion.div>
+  </Motion.div>
 );
 
 const Amenities = () => {
@@ -83,18 +84,23 @@ const Amenities = () => {
             <ArrowLeft size={20} />
           </button>
         </Magnetic>
-        <motion.div 
+
+        <div className="pointer-events-auto scale-90 md:scale-100">
+            <HouseSwitcher />
+        </div>
+
+        <Motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="pointer-events-auto mix-blend-difference"
         >
             <BrandSymbol className="h-10 w-auto" />
-        </motion.div>
+        </Motion.div>
       </nav>
 
       {/* Hero Header */}
       <header className="relative pt-40 pb-20 px-6 md:px-24">
-        <motion.div
+        <Motion.div
            initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 1 }}
@@ -107,7 +113,7 @@ const Amenities = () => {
           <p className="mt-8 text-[#69725d]/70 text-lg md:text-xl font-light max-w-2xl leading-relaxed">
             Preparamos cada detalhe para que sua única preocupação seja aproveitar o momento. Descubra tudo o que espera por você.
           </p>
-        </motion.div>
+        </Motion.div>
       </header>
 
       {/* Amenities Grid */}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Instagram, Phone } from 'lucide-react';
+import { X, Instagram, Phone, MapPin } from 'lucide-react';
 import Lenis from 'lenis';
 
 // Components
@@ -192,7 +192,7 @@ const Layout = () => {
                         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                         className="fixed inset-0 z-[60] flex flex-col md:flex-row shadow-2xl overflow-hidden"
                     >
-                        <div className="flex-1 p-8 md:p-16 flex flex-col justify-between text-[#f5ece3]" style={{ backgroundColor: colors.terracotta }}>
+                        <div className="flex-1 p-6 lg:p-12 flex flex-col justify-between text-[#f5ece3]" style={{ backgroundColor: colors.terracotta }}>
                         <div className="flex justify-between items-center">
                             <div className="flex items-center gap-2">
                             <BrandSymbol className="h-10 w-auto" />
@@ -326,28 +326,40 @@ const Layout = () => {
                         
                         <div className="space-y-6">
                             <h5 className="text-[10px] uppercase tracking-widest font-black opacity-40">Contato</h5>
-                            <div className="space-y-4 text-sm font-bold tracking-tight">
-                            <p className="hover:text-[#924032] cursor-pointer" data-cursor="hover">(62) 99655-8022</p>
-                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer block" data-cursor="hover">{currentHouse.hero.instaHandle}</a>
-                            <p>R. Cedro Santa Luzia, Pirenópolis GO</p>
+                            <div className="space-y-6 text-sm font-bold tracking-tight">
+                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[#924032] cursor-pointer group transition-colors" data-cursor="hover">
+                                <div className="w-10 h-10 rounded-full border border-[#924032]/20 flex items-center justify-center text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors">
+                                    <Phone size={18} />
+                                </div>
+                                <span className="group-hover:translate-x-1 transition-transform">(62) 99655-8022</span>
+                            </a>
+                            
+                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[#924032] cursor-pointer group transition-colors" data-cursor="hover">
+                                <div className="w-10 h-10 rounded-full border border-[#924032]/20 flex items-center justify-center text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors">
+                                    <Instagram size={18} />
+                                </div>
+                                <span className="group-hover:translate-x-1 transition-transform">{currentHouse.hero.instaHandle}</span>
+                            </a>
+
+                             <a href={currentHouse.hero.mapLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[#924032] cursor-pointer group transition-colors" data-cursor="hover">
+                                <div className="w-10 h-10 rounded-full border border-[#924032]/20 flex items-center justify-center text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors flex-shrink-0">
+                                    <MapPin size={18} />
+                                </div>
+                                <span className="group-hover:translate-x-1 transition-transform leading-relaxed">R. Cedro Santa Luzia,<br/> Pirenópolis GO</span>
+                            </a>
                             </div>
                         </div>
                         
-                        <div className="flex flex-col justify-between items-end text-right">
-                            <div className="flex gap-6">
-                            <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover">
-                                <Instagram size={24} />
-                            </a>
-                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:text-[#924032] cursor-pointer transition-colors" data-cursor="hover">
-                                <Phone size={24} />
-                            </a>
+                        <div className="flex flex-col justify-between md:justify-start items-start md:items-end text-left md:text-right h-full py-2 md:gap-1">
+                            <div className="mt-0">
+                                <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">© 2025 Ô Canto de Piri</p>
                             </div>
-                            <div className="mt-12 md:mt-0">
-                            <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">© 2025 Ô Canto de Piri</p>
-                            <p className="text-[10px] uppercase tracking-[0.3em] opacity-30 mt-1">Desenvolvido com Alma</p>
+                            <div className="mt-4 md:mt-0">
+                                <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">Desenvolvido com Alma</p>
                             </div>
                         </div>
                         </div>
+
                     </footer>
                 </div>
                 </>
