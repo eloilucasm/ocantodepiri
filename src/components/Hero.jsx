@@ -15,22 +15,19 @@ const Hero = () => {
     <section ref={heroRef} className="relative h-dvh flex flex-col justify-center items-center overflow-hidden">
         <motion.div 
           style={{ y: heroParallax, opacity: heroOpacity }}
-          className="absolute inset-0 z-0 bg-[#f5ece3]"
+          className="absolute inset-0 z-0 bg-[#f5ece3] will-change-transform"
         >
           <AnimatePresence mode="wait">
             <motion.img 
                 key={currentHouse.id}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 0.6, scale: 1.25 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
                 exit={{ opacity: 0 }}
-                transition={{ 
-                    opacity: { duration: 0.8 },
-                    scale: { duration: 20, ease: "linear", repeat: Infinity }
-                }}
+                transition={{ duration: 0.8 }}
                 src={currentHouse.hero.image} 
                 fetchpriority="high"
                 loading="eager"
-                className="w-full h-full object-cover absolute inset-0 will-change-transform" 
+                className="w-full h-full object-cover absolute inset-0 animate-ken-burns" 
                 alt={currentHouse.name}
             />
           </AnimatePresence>

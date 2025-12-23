@@ -6,7 +6,7 @@
   body {
     cursor: none; /* Hide default cursor */
   }
-  
+
   /* Fallback for devices without fine pointer */
   @media (pointer: coarse) {
     body {
@@ -15,8 +15,35 @@
   }
 }
 
-/* Custom Scrollbar for non-Lenis instances if needed, though we hide it generally */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
+}
+
+/* Performance Optimizations */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Ken Burns Animation - GPU Optimized */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.1) translateZ(0);
+  }
+  100% {
+    transform: scale(1.25) translateZ(0);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s linear infinite alternate;
+  will-change: transform;
 }

@@ -38,7 +38,8 @@ const BookingModal = ({ isOpen, onClose }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
               transition={{ type: "spring", duration: 0.8, bounce: 0.2 }}
-              className="w-full max-w-4xl bg-[#f5ece3] overflow-hidden shadow-2xl rounded-2xl md:rounded-[2rem] flex flex-col md:flex-row pointer-events-auto max-h-[90vh] md:h-auto"
+
+              className="w-full max-w-4xl bg-[#f5ece3] overflow-hidden shadow-2xl rounded-2xl md:rounded-[2rem] flex flex-col md:flex-row pointer-events-auto max-h-[90vh] md:h-auto will-change-transform"
             >
               
               {/* Image Section (Left/Top) */}
