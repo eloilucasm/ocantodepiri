@@ -5,7 +5,18 @@ import { useHouse } from '../context/HouseContext';
 import HouseSwitcher from './HouseSwitcher';
 
 const BookingModal = ({ isOpen, onClose }) => {
-  const { currentHouse } = useHouse();
+  const { currentHouse, houses } = useHouse(); // Get 'houses' from context
+  const [modalHouseId, setModalHouseId] = React.useState(currentHouse?.id || 'casa1');
+
+  // Sync with global state when opening, but allow divergence afterwards
+  React.useEffect(() => {
+    if (isOpen && currentHouse?.id) {
+      setModalHouseId(currentHouse.id);
+    }
+  }, [isOpen, currentHouse]);
+
+  // Use the locally selected house for display
+  const displayHouse = houses[modalHouseId] || currentHouse;
 
   return (
     <AnimatePresence>
@@ -34,18 +45,19 @@ const BookingModal = ({ isOpen, onClose }) => {
               <div className="relative w-full md:w-2/5 h-48 md:h-auto overflow-hidden group">
                 <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors duration-700"></div>
                 <Motion.img 
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 1.5 }}
-                  src={currentHouse.modalImage || currentHouse.hero.img} 
-                  alt={currentHouse.name} 
+                  key={displayHouse.id} // Add key to force re-animate on switch
+                  initial={{ scale: 1.1, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  src={displayHouse.modalImage || displayHouse.hero.img} 
+                  alt={displayHouse.name} 
                   className="w-full h-full object-cover"
                 />
                 
                 {/* Image Overlay Info */}
                 <div className="absolute bottom-6 left-6 z-20 text-white hidden md:block">
                    <p className="text-[10px] uppercase tracking-[0.3em] font-bold opacity-80 mb-2">Sua escolha</p>
-                   <h4 className="font-serif italic text-2xl">{currentHouse.name}</h4>
+                   <h4 className="font-serif italic text-2xl">{displayHouse.name}</h4>
                 </div>
               </div>
 
@@ -55,7 +67,11 @@ const BookingModal = ({ isOpen, onClose }) => {
                  {/* Header Actions: HouseSwitcher + Close */}
                  <div className="flex justify-between items-start mb-6">
                     <div className="scale-90 origin-top-left -ml-1">
-                        <HouseSwitcher />
+                        <HouseSwitcher 
+                            activeId={modalHouseId} 
+                            onSwitch={setModalHouseId} 
+                            isModal={true} 
+                        />
                     </div>
                     <button 
                       onClick={onClose} 
@@ -77,7 +93,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                 <div className="space-y-4">
                     {/* Airbnb Option */}
                     <a 
-                      href={currentHouse.hero.bookingLink}
+                      href={displayHouse.hero.bookingLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center justify-between p-4 md:p-6 bg-white border border-[#924032]/10 rounded-xl hover:bg-[#fa565d] hover:border-[#fa565d] hover:shadow-lg transition-all duration-300"
