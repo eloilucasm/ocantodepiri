@@ -4,6 +4,21 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowDownRight } from 'lucide-react';
 import { useHouse } from '../context/HouseContext';
 
+const textVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } }
+};
+
+const imageContainerVariants = {
+    hidden: { opacity: 0, clipPath: "inset(20% 10% 20% 10% round 100px)" },
+    visible: { opacity: 1, clipPath: "inset(0% 0% 0% 0% round 0px)", transition: { duration: 2, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const badgeVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { delay: 0.6, type: "spring", stiffness: 100 } }
+};
+
 const Concept = () => {
   const conceptRef = useRef(null);
   const { currentHouse } = useHouse();
@@ -16,10 +31,10 @@ const Concept = () => {
         <div className="space-y-6 md:space-y-8">
             <motion.div 
             key={currentHouse.id}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-20%" }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            variants={textVariants}
             >
             <p className="text-[#924032] font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4">{currentHouse.concept.subtitle}</p>
             <h2 className="text-3xl md:text-7xl font-serif leading-[1.1] mb-6 md:mb-8">
@@ -39,10 +54,10 @@ const Concept = () => {
         
         <div className="relative">
             <motion.div 
-            initial={{ opacity: 0, clipPath: "inset(20% 10% 20% 10% round 100px)" }}
-            whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0% round 0px)" }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+            variants={imageContainerVariants}
             className="rounded-t-full overflow-hidden aspect-[2/3] shadow-3xl group relative will-change-[clip-path,opacity]"
             >
             <AnimatePresence mode="wait">
@@ -63,10 +78,10 @@ const Concept = () => {
             
             {/* Badge Flutuante */}
             <motion.div 
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+            variants={badgeVariants}
             className="absolute -bottom-8 -right-8 md:-right-16 bg-white/70 backdrop-blur-md border border-white/50 p-4 md:p-6 shadow-2xl rounded-sm max-w-[200px]"
             >
             <p className="font-serif italic text-xl md:text-2xl leading-tight text-[#924032]">{currentHouse.concept.badge}</p>
@@ -78,4 +93,4 @@ const Concept = () => {
 };
 
 
-export default Concept;
+export default React.memo(Concept);

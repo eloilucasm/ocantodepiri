@@ -1,11 +1,11 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, useMotionValue, useAnimationFrame, useMotionValueEvent } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useHouse } from '../context/HouseContext';
 
-const ExperienceCard = ({ item }) => {
+const ExperienceCard = React.memo(({ item }) => {
     return (
         <motion.div 
             className="w-[80vw] md:w-[500px] snap-center group relative block flex-shrink-0"
@@ -28,7 +28,7 @@ const ExperienceCard = ({ item }) => {
             <p className="text-sm uppercase tracking-widest opacity-60 text-[#f5ece3]">{item.desc}</p>
         </motion.div>
     );
-};
+});
 
 const Experiences = () => {
   const [width, setWidth] = useState(0);
@@ -40,7 +40,7 @@ const Experiences = () => {
   const items = currentHouse.experiences;
 
   // Duplicate items for loop
-  const duplicatedItems = [...items, ...items, ...items];
+  const duplicatedItems = useMemo(() => [...items, ...items, ...items], [items]);
 
   useEffect(() => {
     if(carousel.current) {
@@ -49,7 +49,7 @@ const Experiences = () => {
         const singleSetWidth = totalWidth / 3;
         setWidth(singleSetWidth);
     }
-  }, []);
+  }, [duplicatedItems]); // Depend on duplicatedItems to recalculate if they change
 
   // Auto-scroll animation
   useAnimationFrame((_, delta) => {
@@ -81,6 +81,13 @@ const Experiences = () => {
       }
   });
 
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+  const handleTouchStart = useCallback(() => setIsHovered(true), []);
+  const handleTouchEnd = useCallback(() => setIsHovered(false), []);
+  const handleDragStart = useCallback(() => setIsHovered(true), []);
+  const handleDragEnd = useCallback(() => setIsHovered(false), []);
+
   return (
     <section id="gallery" className="bg-[#69725d] py-32 md:py-48 text-[#f5ece3] overflow-hidden">
         <div className="px-6 lg:px-24 mb-24">
@@ -103,17 +110,17 @@ const Experiences = () => {
         <motion.div 
             ref={carousel} 
             className="cursor-grab active:cursor-grabbing overflow-hidden px-6 lg:px-24"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setIsHovered(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
         >
             <motion.div 
                 style={{ x }}
                 drag="x"
                 dragConstraints={{ left: -100000, right: 100000 }} // Effectively infinite
-                onDragStart={() => setIsHovered(true)}
-                onDragEnd={() => setIsHovered(false)}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
                 className="flex gap-10"
             >
         {duplicatedItems.map((item, idx) => (
@@ -125,4 +132,4 @@ const Experiences = () => {
   );
 };
 
-export default Experiences;
+export default React.memo(Experiences);

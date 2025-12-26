@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { 
   Mountain, 
@@ -38,7 +38,7 @@ const categoryIcons = {
   "Não incluso": <MinusCircle size={20} />
 };
 
-const AmenitySection = ({ title, items, index }) => (
+const AmenitySection = React.memo(({ title, items, index }) => (
   <Motion.div  
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const AmenitySection = ({ title, items, index }) => (
       ))}
     </ul>
   </Motion.div>
-);
+));
 
 const Amenities = () => {
   const navigate = useNavigate();
@@ -70,6 +70,10 @@ const Amenities = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const amenitiesList = useMemo(() => {
+     return Object.entries(currentHouse.amenities || {});
+  }, [currentHouse.amenities]);
 
   return (
     <div className="bg-[#f5ece3] min-h-dvh selection:bg-[#924032] selection:text-white pb-32 overflow-x-hidden">
@@ -119,7 +123,7 @@ const Amenities = () => {
       {/* Amenities Grid */}
       <main className="px-6 md:px-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {Object.entries(currentHouse.amenities || {}).map(([category, items], index) => (
+          {amenitiesList.map(([category, items], index) => (
              <AmenitySection key={category} title={category} items={items} index={index} />
           ))}
         </div>
@@ -143,4 +147,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default React.memo(Amenities);
