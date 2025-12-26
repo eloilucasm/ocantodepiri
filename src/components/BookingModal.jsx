@@ -140,4 +140,4 @@ const BookingModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default BookingModal;
+export default React.memo(BookingModal);

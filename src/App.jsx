@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Instagram, Phone, MapPin } from 'lucide-react';
@@ -41,12 +41,34 @@ const Layout = () => {
     const footerRef = useRef(null);
     const [footerHeight, setFooterHeight] = useState(0);
 
-    const menuItems = [
+    const handleCloseBooking = useCallback(() => setIsBookingOpen(false), []);
+
+    const handleNavigation = useCallback((target) => {
+          setIsMenuOpen(false);
+          if (target === 'gallery') {
+              if (location.pathname !== '/') {
+                  navigate('/');
+                  setTimeout(() => {
+                      const element = document.getElementById('gallery');
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                  }, 500); // Wait for nav
+              } else {
+                  const element = document.getElementById('gallery');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+              }
+          } else if (target === 'pirenopolis') {
+              navigate('/pirenopolis');
+          } else if (target === 'amenidades') {
+              navigate('/amenidades');
+          }
+      }, [location.pathname, navigate]);
+
+    const menuItems = useMemo(() => [
         { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') }, 
         { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
         { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
-    ];
+    ], [handleNavigation]);
 
     // Auto-rotate images when menu is open
     useEffect(() => {
@@ -57,7 +79,7 @@ const Layout = () => {
             }, 4000);
         }
         return () => clearInterval(interval);
-    }, [isMenuOpen, menuItems.length]);
+    }, [isMenuOpen, menuItems]);
 
     // Scroll to Top on route change
     useEffect(() => {
@@ -66,9 +88,6 @@ const Layout = () => {
 
       useEffect(() => {
         if (loading) return;
-        
-        // Only observe footer if we are on Home (since footer is part of Home content currently, or global?)
-        // Let's assume Footer is Global.
         
         const observer = new ResizeObserver((entries) => {
           for (const entry of entries) {
@@ -110,26 +129,6 @@ const Layout = () => {
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
 
-      const handleNavigation = (target) => {
-          setIsMenuOpen(false);
-          if (target === 'gallery') {
-              if (location.pathname !== '/') {
-                  navigate('/');
-                  setTimeout(() => {
-                      const element = document.getElementById('gallery');
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                  }, 500); // Wait for nav
-              } else {
-                  const element = document.getElementById('gallery');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-              }
-          } else if (target === 'pirenopolis') {
-              navigate('/pirenopolis');
-          } else if (target === 'amenidades') {
-              navigate('/amenidades');
-          }
-      };
-
       return (
         <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white overflow-x-hidden" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
@@ -137,7 +136,7 @@ const Layout = () => {
             <CustomCursor />
             <NoiseOverlay />
             <AudioPlayer />
-            <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+            <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
 
             {!loading && (
                 <>

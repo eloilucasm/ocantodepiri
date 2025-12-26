@@ -47,6 +47,60 @@ const ImageCard = ({ img, title, category, link }) => (
   </motion.div>
 );
 
+const waterfalls = [
+  {
+    title: "Cachoeira do Abade",
+    category: "Aventura • Trilha",
+    img: "/piri/cachoeiradoabade.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Abade+Pirenopolis"
+  },
+  {
+    title: "Cachoeira das Araras",
+    category: "Família • Relax",
+    img: "/piri/cachoeiradasararas.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+das+Araras+Pirenopolis"
+  },
+  {
+    title: "Cachoeira do Coqueiro",
+    category: "Paisagem • Fotografia",
+    img: "/piri/cachoeiradocoqueiro.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Coqueiro+Pirenopolis"
+  },
+  {
+    title: "Cachoeira do Lázaro",
+    category: "Trilha • Natureza",
+    img: "/piri/cachoeiradolazaro.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Lazaro+Pirenopolis"
+  }
+];
+
+const gastronomy = [
+  {
+    title: "Rua do Lazer",
+    category: "Restaurantes e Vida Noturna",
+    img: "/piri/restaurantes.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Rua+do+Lazer+Pirenopolis"
+  },
+  {
+    title: "Vinícola Assunção",
+    category: "Eno-gastronomia",
+    img: "/piri/vinicolaassuncao.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Vinicola+Assuncao+Pirenopolis"
+  },
+  {
+    title: "Fazenda Babilônia",
+    category: "Histórico",
+    img: "/piri/fazendababilonia.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Fazenda+Babilonia+Pirenopolis"
+  },
+  {
+    title: "Piri Lounge",
+    category: "Drinks & Vibe",
+    img: "/piri/pirilounge.webp",
+    link: "https://www.google.com/maps/search/?api=1&query=Piri+Lounge+Pirenopolis"
+  }
+];
+
 const Pirenopolis = () => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
@@ -167,32 +221,7 @@ const Pirenopolis = () => {
         </div>
         
         <div className="pl-6 lg:pl-24 overflow-x-auto pb-12 hide-scrollbar flex gap-6 md:gap-8 snap-x snap-mandatory pr-6">
-           {[
-             {
-               title: "Cachoeira do Abade",
-               category: "Aventura • Trilha",
-               img: "/piri/cachoeiradoabade.webp",
-               link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Abade+Pirenopolis"
-             },
-             {
-               title: "Cachoeira das Araras",
-               category: "Família • Relax",
-               img: "/piri/cachoeiradasararas.webp",
-               link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+das+Araras+Pirenopolis"
-             },
-             {
-               title: "Cachoeira do Coqueiro",
-               category: "Paisagem • Fotografia",
-               img: "/piri/cachoeiradocoqueiro.webp",
-               link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Coqueiro+Pirenopolis"
-             },
-             {
-               title: "Cachoeira do Lázaro",
-               category: "Trilha • Natureza",
-               img: "/piri/cachoeiradolazaro.webp",
-               link: "https://www.google.com/maps/search/?api=1&query=Cachoeira+do+Lazaro+Pirenopolis"
-             }
-           ].map((item, index) => (
+           {waterfalls.map((item, index) => (
               <motion.div 
                 key={index}
                 className="relative flex-shrink-0 w-[85vw] md:w-[400px] aspect-[4/5] rounded-sm overflow-hidden snap-center group cursor-pointer"
@@ -242,32 +271,7 @@ const Pirenopolis = () => {
 
           {/* Carousel Container */}
           <div className="pl-6 lg:pl-24 overflow-x-auto pb-12 hide-scrollbar flex gap-6 md:gap-8 snap-x snap-mandatory pr-6">
-             {[
-                {
-                  title: "Rua do Lazer",
-                  category: "Restaurantes e Vida Noturna",
-                  img: "/piri/restaurantes.webp",
-                  link: "https://www.google.com/maps/search/?api=1&query=Rua+do+Lazer+Pirenopolis"
-                },
-                {
-                  title: "Vinícola Assunção",
-                  category: "Eno-gastronomia",
-                  img: "/piri/vinicolaassuncao.webp",
-                  link: "https://www.google.com/maps/search/?api=1&query=Vinicola+Assuncao+Pirenopolis"
-                },
-                 {
-                  title: "Fazenda Babilônia",
-                  category: "Histórico",
-                  img: "/piri/fazendababilonia.webp",
-                  link: "https://www.google.com/maps/search/?api=1&query=Fazenda+Babilonia+Pirenopolis"
-                },
-                {
-                   title: "Piri Lounge",
-                   category: "Drinks & Vibe",
-                   img: "/piri/pirilounge.webp",
-                   link: "https://www.google.com/maps/search/?api=1&query=Piri+Lounge+Pirenopolis"
-                }
-             ].map((item, index) => (
+             {gastronomy.map((item, index) => (
                 <motion.div 
                   key={index}
                   className="relative flex-shrink-0 w-[85vw] md:w-[400px] aspect-[4/5] rounded-sm overflow-hidden snap-center group cursor-pointer"
