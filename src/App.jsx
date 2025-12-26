@@ -5,7 +5,7 @@ import { X, Instagram, Phone, MapPin } from 'lucide-react';
 import Lenis from 'lenis';
 
 // Components
-import NoiseOverlay from './components/NoiseOverlay';
+// import NoiseOverlay from './components/NoiseOverlay';
 import Preloader from './components/Preloader';
 import Hero from './components/Hero';
 import Concept from './components/Concept';
@@ -136,7 +136,7 @@ const Layout = () => {
             
             {/* Components */}
             <Preloader onComplete={() => setLoading(false)} />
-            <NoiseOverlay />
+            {/* <NoiseOverlay /> */}
             <AudioPlayer />
             <Suspense fallback={null}>
                 <AnimatePresence>

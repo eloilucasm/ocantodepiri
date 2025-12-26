@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const PaintingReveal = ({ startAnimation }) => {
     return (
-        <svg viewBox="0 0 417.71 353.56" className="w-full h-auto">
+        <svg viewBox="0 0 417.71 353.56" width="417.71" height="353.56" className="w-full h-auto">
             <defs>
                 {/* Soft gradient for painting effect: Transparent at top, White at bottom */}
                 <linearGradient id="brush-gradient" x1="0" x2="0" y1="0" y2="1">
