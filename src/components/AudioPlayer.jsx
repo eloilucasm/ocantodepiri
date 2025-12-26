@@ -83,6 +83,7 @@ const AudioPlayer = () => {
       <Magnetic>
       <motion.button
         onClick={togglePlay}
+        aria-label={isPlaying ? "Mute sound" : "Unmute sound"}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5ece3] text-[#924032] rounded-full flex items-center justify-center shadow-lg border border-[#924032]/20 relative overflow-hidden group cursor-pointer"

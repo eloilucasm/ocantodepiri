@@ -76,6 +76,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                     </div>
                     <button 
                       onClick={onClose} 
+                      aria-label="Close modal"
                       className="p-2 rounded-full hover:bg-[#924032]/10 text-[#69725d] hover:text-[#924032] transition-colors -mr-2 -mt-2"
                     >
                       <X size={24} />
