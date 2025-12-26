@@ -20,7 +20,7 @@ const PaintingReveal = ({ startAnimation }) => {
                         initial={{ y: 353 }}
                         animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.4, ease: "easeOut" }}
-                        style={{ willChange: "transform", transform: "translateZ(0)" }}
+                        style={{ }}
                     />
                 </mask>
                 <mask id="mask-sky" maskUnits="userSpaceOnUse">
@@ -30,7 +30,7 @@ const PaintingReveal = ({ startAnimation }) => {
                         initial={{ y: 353 }}
                         animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
-                        style={{ willChange: "transform", transform: "translateZ(0)" }}
+                        style={{ }}
                     />
                 </mask>
                 <mask id="mask-mountain-mid" maskUnits="userSpaceOnUse">
@@ -40,7 +40,7 @@ const PaintingReveal = ({ startAnimation }) => {
                         initial={{ y: 353 }}
                         animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.0, ease: "easeOut" }}
-                        style={{ willChange: "transform", transform: "translateZ(0)" }}
+                        style={{ }}
                     />
                 </mask>
                 <mask id="mask-mountain-front" maskUnits="userSpaceOnUse">
@@ -50,7 +50,7 @@ const PaintingReveal = ({ startAnimation }) => {
                         initial={{ y: 353 }}
                         animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
-                        style={{ willChange: "transform", transform: "translateZ(0)" }}
+                        style={{ }}
                     />
                 </mask>
             </defs>

@@ -91,9 +91,9 @@ const AudioPlayer = () => {
             {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
         </div>
         
-        {/* Fill effect on hover */}
-        <div className="absolute inset-0 bg-[#924032] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
-        <div className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        {/* Fill effect on hover - Desktop Only */}
+        <div className="absolute inset-0 bg-[#924032] scale-y-0 [@media(hover:hover)]:group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
         </div>
       </motion.button>

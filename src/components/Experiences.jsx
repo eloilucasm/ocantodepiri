@@ -1,7 +1,7 @@
 
-import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { motion, useMotionValue, useAnimationFrame, useMotionValueEvent } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useHouse } from '../context/HouseContext';
 
@@ -17,7 +17,7 @@ const ExperienceCard = React.memo(({ item }) => {
                     src={item.img} 
                     alt={item.title}
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700 pointer-events-none"
+                    className="w-full h-full object-cover transition-all duration-700 pointer-events-none"
                     variants={{
                         hover: { scale: 1.05 }
                     }}
@@ -31,62 +31,9 @@ const ExperienceCard = React.memo(({ item }) => {
 });
 
 const Experiences = () => {
-  const [width, setWidth] = useState(0);
-  const carousel = useRef();
-  const x = useMotionValue(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const carousel = useRef(null);
   const { currentHouse } = useHouse();
-
   const items = currentHouse.experiences;
-
-  // Duplicate items for loop
-  const duplicatedItems = useMemo(() => [...items, ...items, ...items], [items]);
-
-  useEffect(() => {
-    if(carousel.current) {
-        // Calculate single set width (total width / 3)
-        const totalWidth = carousel.current.scrollWidth;
-        const singleSetWidth = totalWidth / 3;
-        setWidth(singleSetWidth);
-    }
-  }, [duplicatedItems]); // Depend on duplicatedItems to recalculate if they change
-
-  // Auto-scroll animation
-  useAnimationFrame((_, delta) => {
-    if (!isHovered && width > 0) {
-        const moveBy = delta * -0.05; // Adjust speed here
-        let newX = x.get() + moveBy;
-        
-        // Seamless Loop Logic: If we pass the second set, jump back to first
-        if (newX <= -width * 2) {
-             newX = -width;
-        }
-        // If we drag too far right, jump to middle
-        if (newX > 0) {
-            newX = -width; 
-        }
-
-        x.set(newX);
-    }
-  });
-
-  // Handle Drag Loop
-  useMotionValueEvent(x, "change", (latest) => {
-      if (width > 0) {
-           if (latest <= -width * 2) {
-               x.set(latest + width);
-           } else if (latest > -10) { // Buffer for right drag
-               x.set(latest - width);
-           }
-      }
-  });
-
-  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
-  const handleTouchStart = useCallback(() => setIsHovered(true), []);
-  const handleTouchEnd = useCallback(() => setIsHovered(false), []);
-  const handleDragStart = useCallback(() => setIsHovered(true), []);
-  const handleDragEnd = useCallback(() => setIsHovered(false), []);
 
   return (
     <section id="gallery" className="bg-[#69725d] py-32 md:py-48 text-[#f5ece3] overflow-hidden">
@@ -109,23 +56,17 @@ const Experiences = () => {
         {/* Motion Carousel Area */}
         <motion.div 
             ref={carousel} 
-            className="cursor-grab active:cursor-grabbing overflow-hidden px-6 lg:px-24"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+            className="cursor-grab active:cursor-grabbing overflow-hidden px-6 lg:px-24 w-full"
+            whileTap={{ cursor: "grabbing" }}
         >
             <motion.div 
-                style={{ x, willChange: "transform" }}
                 drag="x"
-                dragConstraints={{ left: -100000, right: 100000 }} // Effectively infinite
-                onDragStart={handleDragStart}
-                onDragEnd={handleDragEnd}
-                className="flex gap-10"
+                dragConstraints={carousel}
+                className="flex gap-10 w-max"
             >
-        {duplicatedItems.map((item, idx) => (
-            <ExperienceCard key={idx} item={item} />
-        ))}
+                {items.map((item, idx) => (
+                    <ExperienceCard key={idx} item={item} />
+                ))}
             </motion.div>
         </motion.div>
     </section>

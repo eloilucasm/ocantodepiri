@@ -148,7 +148,7 @@ const Layout = () => {
 
                 {/* Navegação - Only show on Home */}
                 {location.pathname === '/' && (
-                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent'}`}>
+                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/95 py-3 shadow-sm' : 'bg-transparent'}`}>
                     
                     {/* Logo - min-w-0 to prevent flex squash */}
                     <motion.div 
