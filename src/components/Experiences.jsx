@@ -116,7 +116,7 @@ const Experiences = () => {
             onTouchEnd={handleTouchEnd}
         >
             <motion.div 
-                style={{ x }}
+                style={{ x, willChange: "transform" }}
                 drag="x"
                 dragConstraints={{ left: -100000, right: 100000 }} // Effectively infinite
                 onDragStart={handleDragStart}

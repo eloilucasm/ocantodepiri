@@ -6,12 +6,24 @@ const Preloader = ({ onComplete }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-      if (onComplete) onComplete();
-    }, 4000); // 4 seconds load time simulation
+    const minTime = new Promise(resolve => setTimeout(resolve, 2500)); // Min display time
+    
+    const loadResource = new Promise(resolve => {
+        if (document.readyState === 'complete') {
+            resolve();
+        } else {
+            window.addEventListener('load', resolve);
+            // Safety timeout in case load hangs (e.g. ad blockers/scripts)
+            setTimeout(resolve, 4000); 
+        }
+    });
 
-    return () => clearTimeout(timer);
+    Promise.all([minTime, loadResource]).then(() => {
+        setLoading(false);
+        if (onComplete) onComplete();
+    });
+
+    return () => window.removeEventListener('load', () => {});
   }, [onComplete]);
 
   return (

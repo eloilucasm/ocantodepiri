@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 import { houses } from '../data/houses.jsx';
 
 const HouseContext = createContext();
@@ -19,8 +19,16 @@ export const HouseProvider = ({ children }) => {
 
   const currentHouse = houses[currentHouseId];
 
+  const value = useMemo(() => ({
+    currentHouse,
+    currentHouseId,
+    switchHouse,
+    isTransitioning,
+    houses
+  }), [currentHouse, currentHouseId, isTransitioning]);
+
   return (
-    <HouseContext.Provider value={{ currentHouse, currentHouseId, switchHouse, isTransitioning, houses }}>
+    <HouseContext.Provider value={value}>
       {children}
     </HouseContext.Provider>
   );

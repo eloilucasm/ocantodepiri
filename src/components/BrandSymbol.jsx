@@ -15,4 +15,6 @@ const BrandSymbol = ({ className, filled = false }) => {
   );
 };
 
-export default BrandSymbol;
+import React from 'react';
+
+export default React.memo(BrandSymbol);

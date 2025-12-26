@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { X, Instagram, Phone, MapPin } from 'lucide-react';
 import Lenis from 'lenis';
 
 // Components
-import CustomCursor from './components/CustomCursor';
 import NoiseOverlay from './components/NoiseOverlay';
 import Preloader from './components/Preloader';
-import BookingModal from './components/BookingModal';
 import Hero from './components/Hero';
 import Concept from './components/Concept';
-import Experiences from './components/Experiences';
 import BrandSymbol from './components/BrandSymbol';
 import AudioPlayer from './components/AudioPlayer';
 import Magnetic from './components/Magnetic';
 import { HouseProvider, useHouse } from './context/HouseContext';
 import HouseSwitcher from './components/HouseSwitcher';
+import { Suspense } from 'react';
+
+// Lazy Load Heavy Components to reduce initial bundle
+const BookingModal = React.lazy(() => import('./components/BookingModal'));
+const Experiences = React.lazy(() => import('./components/Experiences'));
 const Pirenopolis = React.lazy(() => import('./pages/Pirenopolis'));
 const Amenities = React.lazy(() => import('./pages/Amenities'));
 
@@ -40,6 +42,12 @@ const Layout = () => {
     const [scrolled, setScrolled] = useState(false);
     const footerRef = useRef(null);
     const [footerHeight, setFooterHeight] = useState(0);
+
+    // Optimized Scroll Listener using Framer Motion to prevent Forced Reflows
+    const { scrollY } = useScroll();
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setScrolled(latest > 50);
+    });
 
     const handleCloseBooking = useCallback(() => setIsBookingOpen(false), []);
 
@@ -122,24 +130,22 @@ const Layout = () => {
         requestAnimationFrame(raf);
         return () => lenis.destroy();
       }, [loading]);
-    
-      useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
 
       return (
         <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white overflow-x-hidden" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
+            {/* Components */}
             <Preloader onComplete={() => setLoading(false)} />
-            <CustomCursor />
             <NoiseOverlay />
             <AudioPlayer />
-            <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
+            <Suspense fallback={null}>
+                <AnimatePresence>
+                    {isBookingOpen && (
+                        <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
+                    )}
+                </AnimatePresence>
+            </Suspense>
 
-            {!loading && (
-                <>
                 {/* Navegação - Only show on Home */}
                 {location.pathname === '/' && (
                 <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent'}`}>
@@ -254,9 +260,11 @@ const Layout = () => {
                     <Routes>
                         <Route path="/" element={
                             <>
-                                <Hero />
+                                <Hero showAnimations={!loading} />
                                 <Concept />
-                                <Experiences />
+                                <Suspense fallback={<div className="h-96" />}>
+               <Experiences />
+            </Suspense>
                                 {/* Chamada para Ação */}
                                 <section className="py-40 text-center px-6 relative overflow-hidden" style={{ backgroundColor: colors.cream }}>
                                     <motion.div 
@@ -304,8 +312,16 @@ const Layout = () => {
                                 </section>
                             </>
                         } />
-                        <Route path="/pirenopolis" element={<Pirenopolis />} />
-                        <Route path="/amenidades" element={<Amenities />} />
+                        <Route path="/pirenopolis" element={
+            <Suspense fallback={null}>
+              <Pirenopolis />
+            </Suspense>
+          } />
+          <Route path="/amenidades" element={
+            <Suspense fallback={null}>
+              <Amenities />
+            </Suspense>
+          } />
                     </Routes>
                     </React.Suspense>
                 </div>
@@ -361,8 +377,6 @@ const Layout = () => {
 
                     </footer>
                 </div>
-                </>
-            )}
         </div>
       );
 };

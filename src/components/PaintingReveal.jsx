@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const PaintingReveal = () => {
+const PaintingReveal = ({ startAnimation }) => {
     return (
         <svg viewBox="0 0 417.71 353.56" className="w-full h-auto">
             <defs>
@@ -18,8 +18,9 @@ const PaintingReveal = () => {
                         x="0" width="417.71" height="600"
                         fill="url(#brush-gradient)"
                         initial={{ y: 353 }}
-                        animate={{ y: -100 }}
+                        animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.4, ease: "easeOut" }}
+                        style={{ willChange: "transform", transform: "translateZ(0)" }}
                     />
                 </mask>
                 <mask id="mask-sky" maskUnits="userSpaceOnUse">
@@ -27,8 +28,9 @@ const PaintingReveal = () => {
                         x="0" width="417.71" height="600"
                         fill="url(#brush-gradient)"
                         initial={{ y: 353 }}
-                        animate={{ y: -100 }}
+                        animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
+                        style={{ willChange: "transform", transform: "translateZ(0)" }}
                     />
                 </mask>
                 <mask id="mask-mountain-mid" maskUnits="userSpaceOnUse">
@@ -36,8 +38,9 @@ const PaintingReveal = () => {
                         x="0" width="417.71" height="600"
                         fill="url(#brush-gradient)"
                         initial={{ y: 353 }}
-                        animate={{ y: -100 }}
+                        animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 1.0, ease: "easeOut" }}
+                        style={{ willChange: "transform", transform: "translateZ(0)" }}
                     />
                 </mask>
                 <mask id="mask-mountain-front" maskUnits="userSpaceOnUse">
@@ -45,8 +48,9 @@ const PaintingReveal = () => {
                         x="0" width="417.71" height="600"
                         fill="url(#brush-gradient)"
                         initial={{ y: 353 }}
-                        animate={{ y: -100 }}
+                        animate={startAnimation ? { y: -100 } : { y: 353 }}
                         transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
+                        style={{ willChange: "transform", transform: "translateZ(0)" }}
                     />
                 </mask>
             </defs>
@@ -65,7 +69,7 @@ const PaintingReveal = () => {
                 stroke="#eee6de"
                 strokeWidth="1.5"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
+                animate={startAnimation ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
                 transition={{ duration: 1.5, delay: 2.2, ease: "easeInOut" }}
             />
             <motion.path
@@ -74,7 +78,7 @@ const PaintingReveal = () => {
                 stroke="#eee6de"
                 strokeWidth="1.5"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
+                animate={startAnimation ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
                 transition={{ duration: 1.5, delay: 2.5, ease: "easeInOut" }}
             />
 
@@ -102,7 +106,7 @@ const PaintingReveal = () => {
             {/* Text Elements - "Ô Canto de Piri" */}
             <motion.g
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 3, duration: 0.8 }}
             >
                 <path fill="#b86e58" d="m25.07,257.02c3.42,0,6.65.65,9.69,1.96,3.04,1.3,5.72,3.09,8.02,5.36,2.3,2.27,4.1,4.93,5.41,7.97,1.3,3.04,1.96,6.31,1.96,9.79s-.65,6.73-1.96,9.74c-1.3,3.01-3.11,5.67-5.41,7.97-2.3,2.3-4.97,4.1-8.02,5.41-3.04,1.3-6.28,1.96-9.69,1.96s-6.74-.65-9.79-1.96c-3.05-1.3-5.7-3.11-7.97-5.41-2.27-2.3-4.05-4.95-5.36-7.97-1.3-3.01-1.96-6.26-1.96-9.74s.65-6.74,1.96-9.79c1.3-3.04,3.09-5.7,5.36-7.97,2.27-2.27,4.92-4.05,7.97-5.36,3.04-1.3,6.31-1.96,9.79-1.96Zm0,2.05c-2.61,0-5.05.61-7.32,1.82-2.27,1.21-4.26,2.86-5.97,4.94-1.71,2.08-3.06,4.52-4.05,7.32-.99,2.8-1.49,5.78-1.49,8.95s.5,6.15,1.49,8.95c.99,2.8,2.34,5.22,4.05,7.27,1.71,2.05,3.7,3.68,5.97,4.89,2.27,1.21,4.71,1.82,7.32,1.82s5.05-.61,7.32-1.82c2.27-1.21,4.26-2.84,5.97-4.89,1.71-2.05,3.06-4.47,4.05-7.27.99-2.8,1.49-5.78,1.49-8.95s-.5-6.15-1.49-8.95c-.99-2.8-2.35-5.23-4.05-7.32-1.71-2.08-3.7-3.73-5.97-4.94-2.27-1.21-4.71-1.82-7.32-1.82Zm-9.04-7.74c-.25-.43-.3-.89-.14-1.35.15-.47.48-.82.98-1.07l7.18-3.45c.12-.12.37-.25.75-.37.43,0,.75.03.93.09,0,.06.06.09.19.09l7.36,3.63c.5.25.82.61.98,1.07.15.47.11.92-.14,1.35-.25.5-.59.82-1.03.98-.44.16-.9.11-1.4-.14l-6.62-3.26-6.62,3.26c-.5.19-.96.22-1.4.09-.44-.12-.78-.43-1.03-.93Z"/>
@@ -122,7 +126,7 @@ const PaintingReveal = () => {
             {/* Text Elements - "CASA DE TEMPORADA" */}
             <motion.g
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 3.3, duration: 0.8 }}
             >
                 <path fill="#b86e58" d="m94.5,339.58c-.98-1.27-2.59-1.98-4.17-1.98-3.88,0-6.44,3.1-6.44,7.03,0,3.63,2.41,6.73,6.44,6.73,1.98,0,3.49-.88,4.51-2.32l1.98,1.49c-.51.71-2.59,3.02-6.54,3.02-5.49,0-8.88-4.59-8.88-8.93,0-5.37,3.68-9.22,9-9.22,2.27,0,4.66.85,6.05,2.68l-1.95,1.49Z"/>

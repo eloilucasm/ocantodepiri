@@ -4,14 +4,7 @@
 
 @layer base {
   body {
-    cursor: none; /* Hide default cursor */
-  }
-
-  /* Fallback for devices without fine pointer */
-  @media (pointer: coarse) {
-    body {
-      cursor: auto;
-    }
+    /* cursor: none; Removed by user request */
   }
 }
 
