@@ -85,17 +85,14 @@ const AudioPlayer = () => {
           href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5ece3] text-[#924032] rounded-full flex items-center justify-center shadow-lg border border-[#924032]/20 relative overflow-hidden group cursor-pointer mb-2"
+          className="w-12 h-12 lg:w-14 lg:h-14 bg-[#69725d] text-[#f5ece3] rounded-full flex items-center justify-center shadow-lg border border-[#f5ece3]/20 relative overflow-hidden group cursor-pointer mb-2"
         >
-          <div className="relative z-10">
-            <MessageCircle size={24} />
+          <div className="relative z-10 w-6 h-6 flex items-center justify-center">
+             <img src="/whatsapp.svg" alt="WhatsApp" className="w-full h-full object-contain brightness-0 invert transition-all duration-300" />
           </div>
           
           {/* Fill effect on hover */}
           <div className="absolute inset-0 bg-[#924032] scale-y-0 [@media(hover:hover)]:group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
-          <div className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <MessageCircle size={24} />
-          </div>
         </a>
       </Magnetic>
 

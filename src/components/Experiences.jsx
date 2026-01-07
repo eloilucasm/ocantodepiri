@@ -54,21 +54,42 @@ const Experiences = () => {
         </div>
 
         {/* Motion Carousel Area */}
+        {/* Mobile: Drag Carousel */}
         <motion.div 
             ref={carousel} 
-            className="cursor-grab active:cursor-grabbing overflow-hidden px-6 lg:px-24 w-full"
+            className="md:hidden cursor-grab active:cursor-grabbing overflow-hidden px-6 w-full"
             whileTap={{ cursor: "grabbing" }}
         >
             <motion.div 
                 drag="x"
                 dragConstraints={carousel}
-                className="flex gap-10 w-max"
+                className="flex gap-6 w-max"
             >
                 {items.map((item, idx) => (
                     <ExperienceCard key={idx} item={item} />
                 ))}
             </motion.div>
         </motion.div>
+
+        {/* Desktop: Infinite Marquee Carousel */}
+        <div className="hidden md:block overflow-hidden w-full relative">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#69725d] to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#69725d] to-transparent z-10" />
+            
+            <motion.div 
+                className="flex gap-10 w-max px-24"
+                animate={{ x: "-50%" }}
+                transition={{ 
+                    ease: "linear", 
+                    duration: 50, 
+                    repeat: Infinity 
+                }}
+            >
+                {[...items, ...items].map((item, idx) => (
+                    <ExperienceCard key={`desktop-${idx}`} item={item} />
+                ))}
+            </motion.div>
+        </div>
     </section>
   );
 };

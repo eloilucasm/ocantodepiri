@@ -7,12 +7,12 @@ export const houses = {
     modalImage: '/sublime/casasublime.webp',
     hero: {
       image: '/sublime/piscina.webp',
-      subtitle: 'Pirenópolis, Goiás',
+      subtitle: 'Jardim Vila Boa, Pirenópolis - GO',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/51765912?guests=1&adults=1&s=67&unique_share_id=5450d026-b60d-400d-b643-c1540a688a51',
       mapLink: 'https://maps.app.goo.gl/XrEgJbWkhjPDm9Tz5',
-      instaLink: 'https://www.instagram.com/ocantodepiri/',
-      instaHandle: '@ocantodepiri'
+      instaLink: 'https://www.instagram.com/ocantodepiri2/',
+      instaHandle: '@ocantodepiri2'
     },
     concept: {
       subtitle: 'O Conceito',
@@ -54,12 +54,12 @@ O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo confo
     modalImage: '/essencia/casaessencia.webp',
     hero: {
       image: '/essencia/salaessencia.webp',
-      subtitle: 'Refúgio Natural',
+      subtitle: 'Residencial Santa Luzia, Pirenópolis - GO',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/1035663779596246726?guests=1&adults=1&s=67&unique_share_id=4e9fc871-1b21-4ab2-86a4-cfa30557e33c',
       mapLink: 'https://maps.app.goo.gl/dugy7GJ1n8dfnTNQ9',
-      instaLink: 'https://www.instagram.com/ocantodepiri2/',
-      instaHandle: '@ocantodepiri2'
+      instaLink: 'https://www.instagram.com/ocantodepiri/',
+      instaHandle: '@ocantodepiri'
     },
     concept: {
       subtitle: 'O Conceito',

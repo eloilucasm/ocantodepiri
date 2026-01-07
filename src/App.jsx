@@ -374,7 +374,7 @@ const Layout = () => {
                                 <div className="w-10 h-10 rounded-full border border-[#924032]/20 flex items-center justify-center text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors flex-shrink-0">
                                     <MapPin size={18} />
                                 </div>
-                                <span className="group-hover:translate-x-1 transition-transform leading-relaxed">R. Cedro Santa Luzia,<br/> Pirenópolis GO</span>
+                                <span className="group-hover:translate-x-1 transition-transform leading-relaxed whitespace-pre-line">{currentHouse.hero.subtitle}</span>
                             </a>
                             </div>
                         </div>

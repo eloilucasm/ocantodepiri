@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, Info, Clock, Users, ArrowRight, X } from 'lucide-react';
+import { Check, Clock, Users, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BrandSymbol from '../components/BrandSymbol';
+import { useHouse } from '../context/HouseContext';
+import HouseSwitcher from '../components/HouseSwitcher';
 
 const colors = {
   cream: '#f5ece3',
@@ -116,6 +118,22 @@ const PackageCard = ({ title, price, description, features, recommended, delay =
     
 const Packages = () => {
     const navigate = useNavigate();
+    const { currentHouse, currentHouseId } = useHouse();
+
+    const packagesPricing = {
+        casa1: { // Casa Sublime
+            basic: "3.200",
+            comfort: "3.600",
+            experience: "4.200"
+        },
+        'casa-jardim': { // Casa Essência
+            basic: "2.700",
+            comfort: "3.200",
+            experience: "3.700"
+        }
+    };
+
+    const currentPrices = packagesPricing[currentHouseId];
 
     return (
         <div className="min-h-screen pt-32 pb-20 px-6 md:px-12 lg:px-24" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
@@ -143,11 +161,14 @@ const Packages = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="flex flex-col items-center"
                 >
-                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#924032] mb-4 block">Casa de Temporada</span>
-                    <h1 className="text-5xl md:text-8xl font-serif leading-[0.9] text-[#69725d] mb-8">
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#924032] mb-6 block">Casa de Temporada</span>
+                    
+                    <h1 className="text-5xl md:text-8xl font-serif leading-[0.9] text-[#69725d] mb-4">
                         Estrutura de <span className="italic text-[#924032]">Pacotes</span>
                     </h1>
+                    <p className="text-sm uppercase tracking-widest opacity-60 mb-8">{currentHouse.name}</p>
                 </motion.div>
 
                 <motion.div 
@@ -180,11 +201,21 @@ const Packages = () => {
                 </Section>
 
                 {/* Packages Grid */}
-                <Section title="Pacotes Disponíveis">
+                <Section>
+                    <div className="flex flex-col items-center mb-12">
+                        <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-8 flex items-center gap-3 text-[#924032]">
+                            <span className="w-8 h-[1px] bg-[#924032]/40"></span>
+                            Pacotes
+                            <span className="w-8 h-[1px] bg-[#924032]/40"></span>
+                        </h3>
+                        <div className="scale-110">
+                            <HouseSwitcher isModal={true} />
+                        </div>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 relative items-start">
                         <PackageCard 
                             title="Essencial" 
-                            price="3.200" 
+                            price={currentPrices.basic} 
                             description="Indicado para grupos que preferem autonomia total durante a estadia."
                             features={[
                                 "Hospedagem completa da casa para até 10 pessoas",
@@ -196,7 +227,7 @@ const Packages = () => {
                         />
                          <PackageCard 
                             title="Conforto" 
-                            price="3.600" 
+                            price={currentPrices.comfort} 
                             description="Hospedagem + serviço de apoio doméstico no período da manhã."
                             recommended={true}
                             theme="green"
@@ -213,7 +244,7 @@ const Packages = () => {
                         />
                          <PackageCard 
                             title="Experiência" 
-                            price="4.200" 
+                            price={currentPrices.experience} 
                             description="Hospedagem + apoio no preparo das refeições e organização ao longo do dia."
                             features={[
                                 "Tudo do pacote Conforto",
@@ -266,7 +297,6 @@ const Packages = () => {
                     </Section>
                 </div>
 
-                {/* Footer Note */}
                 {/* Footer Note */}
                  <Section className="mt-20 pt-12 border-t border-[#69725d]/10 text-center max-w-3xl mx-auto">
                     <p className="font-serif italic text-2xl md:text-3xl text-[#924032] leading-relaxed">
