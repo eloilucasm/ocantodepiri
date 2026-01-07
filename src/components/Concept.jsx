@@ -19,14 +19,25 @@ const badgeVariants = {
     visible: { scale: 1, opacity: 1, transition: { delay: 0.6, type: "spring", stiffness: 100 } }
 };
 
+import { useState } from 'react';
+import EssenceModal from './EssenceModal';
+
 const Concept = () => {
   const conceptRef = useRef(null);
   const { currentHouse } = useHouse();
   const { scrollYProgress: conceptY } = useScroll({ target: conceptRef, offset: ["start end", "end start"] });
   const conceptImgY = useTransform(conceptY, [0, 1], ["-10%", "10%"]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section ref={conceptRef} className="py-16 md:py-48 px-6 lg:px-24 max-w-7xl mx-auto">
+        <EssenceModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+            text={currentHouse.concept.essenceText}
+            houseName={currentHouse.name}
+        />
+
         <div className="grid md:grid-cols-2 gap-12 md:gap-32 items-center">
         <div className="space-y-6 md:space-y-8">
             <motion.div 
@@ -40,10 +51,14 @@ const Concept = () => {
             <h2 className="text-3xl md:text-7xl font-serif leading-[1.1] mb-6 md:mb-8">
                 {currentHouse.concept.title}
             </h2>
-            <p className="text-base md:text-xl leading-relaxed opacity-80 mb-8 md:mb-10">
+            <p className="text-base md:text-xl leading-relaxed opacity-80 mb-8 md:mb-10 whitespace-pre-line">
                 {currentHouse.concept.description}
             </p>
-            <button className="flex items-center gap-4 group text-sm font-bold uppercase tracking-widest" data-cursor="hover">
+            <button 
+                onClick={() => setIsModalOpen(true)}
+                className="flex items-center gap-4 group text-sm font-bold uppercase tracking-widest outline-none" 
+                data-cursor="hover"
+            >
                 <span className="border-b-2 border-[#924032] pb-1">Conheça nossa essência</span>
                 <div className="bg-[#924032] p-2 rounded-full text-white group-hover:rotate-45 transition-transform duration-500">
                 <ArrowDownRight size={16} />

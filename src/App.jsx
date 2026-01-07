@@ -21,6 +21,7 @@ const BookingModal = React.lazy(() => import('./components/BookingModal'));
 const Experiences = React.lazy(() => import('./components/Experiences'));
 const Pirenopolis = React.lazy(() => import('./pages/Pirenopolis'));
 const Amenities = React.lazy(() => import('./pages/Amenities'));
+const Packages = React.lazy(() => import('./pages/Packages'));
 
 const colors = {
   cream: '#f5ece3',
@@ -73,10 +74,11 @@ const Layout = () => {
 
     const menuItems = useMemo(() => [
         { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') }, 
+        { label: 'Pacotes', img: '/sublime/cozinha.webp', action: () => { setIsMenuOpen(false); navigate('/pacotes'); } },
         { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
         { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
-    ], [handleNavigation]);
+    ], [handleNavigation, navigate]);
 
     // Auto-rotate images when menu is open
     useEffect(() => {
@@ -216,7 +218,7 @@ const Layout = () => {
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
                                 transition={{ delay: 0.3 + (i * 0.1), duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                                className="text-5xl md:text-9xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-[#bebe53] transition-all duration-500 w-fit"
+                                className="text-4xl md:text-8xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-[#bebe53] transition-all duration-500 w-fit"
                                 data-cursor="hover"
                                 onClick={item.action}
                                 >
@@ -322,6 +324,11 @@ const Layout = () => {
               <Amenities />
             </Suspense>
           } />
+          <Route path="/pacotes" element={
+            <Suspense fallback={null}>
+              <Packages />
+            </Suspense>
+          } />
                     </Routes>
                     </React.Suspense>
                 </div>
@@ -367,10 +374,10 @@ const Layout = () => {
                         
                         <div className="flex flex-col justify-between md:justify-start items-start md:items-end text-left md:text-right h-full py-2 md:gap-1">
                             <div className="mt-0">
-                                <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">© 2025 Ô Canto de Piri</p>
+                                <p className="text-[10px] uppercase tracking-[0.3em] text-[#924032] opacity-60">© 2025 Ô Canto de Piri</p>
                             </div>
                             <div className="mt-4 md:mt-0">
-                                <p className="text-[10px] uppercase tracking-[0.3em] opacity-30">Desenvolvido com Alma</p>
+                                <p className="text-[10px] uppercase tracking-[0.3em] text-[#924032] opacity-60">Desenvolvido pela ACADI e <a href="https://atmosfera.vc/" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity underline decoration-[#924032]/20 underline-offset-4">Atmosfera</a></p>
                             </div>
                         </div>
                         </div>

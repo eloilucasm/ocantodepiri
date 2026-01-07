@@ -3,10 +3,10 @@ import React from 'react';
 export const houses = {
   casa1: {
     id: 'casa1',
-    name: 'Casa Villa',
-    modalImage: '/casavilla.webp',
+    name: 'Casa Sublime',
+    modalImage: '/sublime/casasublime.webp',
     hero: {
-      image: '/hero.webp',
+      image: '/sublime/casasublime.webp',
       subtitle: 'Pirenópolis, Goiás',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/51765912?guests=1&adults=1&s=67&unique_share_id=5450d026-b60d-400d-b643-c1540a688a51',
@@ -16,23 +16,25 @@ export const houses = {
     },
     concept: {
       subtitle: 'O Conceito',
-      title: <>Vínculos que <br /> <span className="text-[#924032] italic">duram para sempre</span>.</>,
-      description: 'Inspirada pela energia positiva e boas vibrações de Pirenópolis, nossa casa foi projetada para ser um refúgio de leveza. Um lugar onde cada detalhe é um convite para o bem-estar.',
-      image: '/quarto.webp',
+      title: <>Pirenópolis com a liberdade de <br /> <span className="text-[#924032] italic">uma casa e o conforto de um hotel</span>.</>,
+      description: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
+
+O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo conforto, praticidade e acolhimento, garantindo uma estadia leve, funcional e verdadeiramente prazerosa para toda a família.`,
+      essenceText: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
+      image: '/sublime/detalhequarto.webp',
       badge: 'Sinta o aconchego de casa.'
     },
     experiences: [
-      { title: 'Suíte Master', desc: 'Conforto absoluto e luz natural.', img: '/suitemaster.webp' },
-      { title: 'Canto Gourmet', desc: 'Sabor e convívio ao ar livre.', img: '/gourmet.webp' },
-      { title: 'Lazer e Sol', desc: 'Piscina aquecida em meio ao jardim.', img: '/piscina.webp' },
-      { title: 'Espaço de Jogos', desc: 'Diversão garantida.', img: '/jogos.webp' },
-      { title: 'Sol e Braza', desc: 'Churrasco e bons momentos.', img: '/churrasqueira.webp' },
-      { title: 'Piscina', desc: 'Refrescância e lazer.', img: '/piscina2.webp' },
-      { title: 'Para toda família', desc: 'Espaço para todos.', img: '/familia.webp' },
+      { title: 'Suíte Master', desc: 'Conforto absoluto.', img: '/sublime/suite.webp' },
+      { title: 'Canto Gourmet', desc: 'Sabor e convívio.', img: '/sublime/cozinha.webp' },
+      { title: 'Lazer e Sol', desc: 'Um espaço completo para você.', img: '/sublime/piscina.webp' },
+      { title: 'Espaço de Jogos', desc: 'Diversão garantida.', img: '/sublime/jogoselazer.webp' },
+      { title: 'Sol e Braza', desc: 'Churrasco e bons momentos.', img: '/sublime/churrasqueira.webp' },
+      { title: 'Para toda família', desc: 'Espaço para todos.', img: '/sublime/espaçoamplo.webp' },
     ],
     amenities: {
-      "Vistas panorâmicas": ["Vista para as montanhas"],
-      "Banheiro": ["Água quente"],
+
+
       "Quarto e lavanderia": ["Cabides", "Roupa de cama", "Blackout nas cortinas", "Varal para secar roupas", "Local para guardar as roupas: cômoda"],
       "Entretenimento": ["TV", "Sistema de som com Bluetooth", "Mesa de bilhar"],
       "Climatização": ["Ar-condicionado portátil", "Ar-condicionado split", "Ventiladores portáteis"],
@@ -48,10 +50,10 @@ export const houses = {
   },
   'casa-jardim': {
     id: 'casa-jardim',
-    name: 'Casa Jardim',
-    modalImage: '/casajardim.webp',
+    name: 'Casa Essência',
+    modalImage: '/essencia/casaessencia.webp',
     hero: {
-      image: '/piscina2.webp', // Back to original placeholder
+      image: '/essencia/casaessencia.webp',
       subtitle: 'Refúgio Natural',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/1035663779596246726?guests=1&adults=1&s=67&unique_share_id=4e9fc871-1b21-4ab2-86a4-cfa30557e33c',
@@ -60,24 +62,28 @@ export const houses = {
       instaHandle: '@ocantodepiri2'
     },
     concept: {
-      subtitle: 'A Experiência',
-      title: <>Natureza que <br /> <span className="text-[#924032] italic">abraça a alma</span>.</>,
-      description: 'Cercada pelo verde e pelo canto dos pássaros, a Casa Jardim é um santuário particular. Perfeita para desconectar do mundo e reconectar com o que importa.',
-      image: '/gourmet.webp', // Placeholder
-      badge: 'Respire o ar puro.'
+      subtitle: 'O Conceito',
+      title: <>Pirenópolis com a liberdade de <br /> <span className="text-[#924032] italic">uma casa e o conforto de um hotel</span>.</>,
+      description: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
+
+O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo conforto, praticidade e acolhimento, garantindo uma estadia leve, funcional e verdadeiramente prazerosa para toda a família.`,
+      essenceText: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
+      image: '/essencia/detalhequarto.webp',
+      badge: 'Leveza e aconchego.'
     },
     experiences: [
-      { title: 'Jardim Secreto', desc: 'Um oásis particular.', img: '/familia.webp' }, // Placeholder images
-      { title: 'Varanda Zen', desc: 'Redes e silêncio.', img: '/quarto.webp' },
-      { title: 'Cozinha Viva', desc: 'Para chefs de fim de semana.', img: '/cozinha.webp' },
-      { title: 'Piscina Natural', desc: 'Refrescância pura.', img: '/piscina.webp' },
-      { title: 'Fogueira', desc: 'Histórias ao luar.', img: '/churrasqueira.webp' },
-      { title: 'Suíte Jardim', desc: 'Acorde com os pássaros.', img: '/suitemaster.webp' },
-      { title: 'Área Kids', desc: 'Liberdade para brincar.', img: '/jogos.webp' },
+      { title: 'Sala de Estar', desc: 'Um lugar, múltiplos espaços.', img: '/essencia/salaessencia.webp' },
+      { title: 'Detalhes que Encantam', desc: 'Aconchego em cada canto.', img: '/essencia/suitedetalhe.webp' },
+      { title: 'Espaço Gourmet', desc: 'Perfeito para celebrar.', img: '/essencia/gourmet.webp' },
+      { title: 'Piscina', desc: 'Lazer privativo o ano todo.', img: '/essencia/piscina.webp' },
+      { title: 'Churrasqueira', desc: 'Momentos de sabor e alegria.', img: '/essencia/churrasqueira.webp' },
+      { title: 'Suítes Acolhedoras', desc: 'Descanso absoluto.', img: '/essencia/suite.webp' },
+      { title: 'Quarto Família', desc: 'Espaço para todos.', img: '/essencia/quartofamilia.webp' },
+      { title: 'Lazer e Jogos', desc: 'Diversão para todas as idades.', img: '/essencia/jogoselazer.webp' },
     ],
     amenities: {
-      "Vistas panorâmicas": ["Vista para o horizonte da cidade", "Vista para as montanhas", "Vista para a piscina"],
-      "Banheiro": ["Água quente"],
+
+
       "Quarto e lavanderia": ["Cabides", "Roupa de cama", "Cobertores e travesseiros extras", "Blackout nas cortinas", "Ferro de passar", "Varal para secar roupas", "Local para guardar as roupas: guarda-roupa e cômoda"],
       "Entretenimento": ["TV", "Mesa de bilhar"],
       "Climatização": ["Ar-condicionado central"],
