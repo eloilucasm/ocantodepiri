@@ -74,7 +74,7 @@ const PackageCard = ({ title, price, description, features, recommended, delay =
         
         <div className="mb-8">
             <div className="flex justify-between items-start mb-2">
-                <h4 className="text-2xl font-serif italic" style={{ color: currentTheme.title }}>{title}</h4>
+                <h4 className="text-3xl font-serif italic" style={{ color: currentTheme.title }}>{title}</h4>
                 {/* Visual Indicator of Tier */}
                 <div className="flex gap-1 mt-2">
                     <div className={`w-2 h-2 rounded-full ${theme === 'neutral' || theme === 'green' || theme === 'terracotta' ? (theme === 'neutral' ? 'bg-[#69725d]/40' : 'bg-[#69725d]') : 'bg-transparent'}`}></div>
@@ -84,19 +84,19 @@ const PackageCard = ({ title, price, description, features, recommended, delay =
             </div>
             
             <div className="flex items-baseline gap-1" style={{ color: currentTheme.price }}>
-                <span className="text-sm opacity-60">R$</span>
-                <span className="text-4xl font-light tracking-tight">{price}</span>
+                <span className="text-base opacity-60">R$</span>
+                <span className="text-5xl font-light tracking-tight">{price}</span>
             </div>
         </div>
 
-        <p className="text-sm leading-relaxed opacity-80 mb-8 flex-grow" style={{ color: colors.deepGreen }}>
+        <p className="text-base leading-relaxed opacity-80 mb-8 flex-grow" style={{ color: colors.deepGreen }}>
         {description}
         </p>
 
-        <ul className="space-y-4 text-sm opacity-80 mb-8" style={{ color: colors.deepGreen }}>
+        <ul className="space-y-4 text-base opacity-80 mb-8" style={{ color: colors.deepGreen }}>
         {features.map((feature, i) => (
             <li key={i} className="flex items-start gap-3">
-                <Check size={16} className="mt-0.5 shrink-0" style={{ color: currentTheme.icon }} />
+                <Check size={18} className="mt-1 shrink-0" style={{ color: currentTheme.icon }} />
                 <span>{feature}</span>
             </li>
         ))}
@@ -172,7 +172,7 @@ const Packages = () => {
                 {/* Intro */}
                 <Section className="max-w-3xl mx-auto text-center md:text-lg leading-relaxed opacity-80 mb-32">
                     <p className="mb-6">
-                        Cada detalhe da casa de temporada foi pensado para que você se sinta verdadeiramente em casa — do seu jeito. Por isso, oferecemos três formas de viver a experiência, respeitando diferentes ritmos, desejos e níveis de conforto. Você pode escolher a liberdade de cuidar de tudo no seu tempo ou se permitir relaxar ainda mais, contando com apoio no preparo das refeições e na organização do espaço em momentos específicos da sua estadia. Tudo para que sua única preocupação seja aproveitar, descansar e viver Pirenópolis com leveza.
+                        A casa de temporada foi pensada para que você se sinta em casa, com o conforto de hotel. Oferecemos três formas de viver a experiência, respeitando diferentes ritmos e níveis de conforto. Você pode escolher total liberdade para cuidar de tudo no seu tempo ou optar por mais comodidade, com apoio pontual no preparo das refeições e na organização. Assim, sua única preocupação é aproveitar, descansar e viver Pirenópolis com leveza.
                     </p>
                     <p className="italic text-[#924032]">
                         O pacote escolhido determina o cuidado que acompanha a sua estadia, sem nunca abrir mão da exclusividade e da privacidade de viver a casa como se fosse sua.

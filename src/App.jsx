@@ -29,7 +29,7 @@ const colors = {
   terracotta: '#924032',
 };
 
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 
 // Layout and Global Logic
 const Layout = () => {
@@ -292,19 +292,26 @@ const Layout = () => {
                                             Reserve seu <br /> <span className="text-[#924032] italic">canto de paz</span>.
                                         </motion.h2>
                                     </div>
-                                    <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-10">
-                                        <button 
-                                            onClick={() => setIsBookingOpen(true)}
-                                            className="w-[260px] px-6 py-6 bg-[#924032] text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#69725d] transition-all duration-500 hover:scale-105 text-center whitespace-nowrap"
+                                    <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 pt-10 px-4">
+                                        <Link 
+                                            to="/pacotes"
+                                            className="w-full md:w-[260px] px-6 py-6 bg-[#924032] text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#69725d] transition-all duration-500 hover:scale-105 text-center whitespace-nowrap"
                                             data-cursor="hover"
                                         >
-                                        Consultar Datas
-                                        </button>
+                                        Conhecer Pacotes
+                                        </Link>
+                                        <Link 
+                                            to="/pirenopolis"
+                                            className="w-full md:w-[260px] px-6 py-6 bg-[#69725d] text-[#f5ece3] rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#924032] transition-all duration-500 hover:scale-105 text-center whitespace-nowrap"
+                                            data-cursor="hover"
+                                        >
+                                        Conheça Piri
+                                        </Link>
                                         <a 
                                             href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
-                                            className="w-[260px] px-6 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center whitespace-nowrap" 
+                                            className="w-full md:w-[260px] px-6 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center whitespace-nowrap" 
                                             data-cursor="hover"
                                         >
                                         Falar no WhatsApp

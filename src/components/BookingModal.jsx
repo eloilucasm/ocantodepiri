@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MessageCircle, ArrowUpRight } from 'lucide-react';
+import { X, Calendar, MessageCircle, ArrowUpRight, MapPin } from 'lucide-react';
 import { useHouse } from '../context/HouseContext';
 import HouseSwitcher from './HouseSwitcher';
 

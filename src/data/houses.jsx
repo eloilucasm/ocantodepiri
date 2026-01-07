@@ -6,7 +6,7 @@ export const houses = {
     name: 'Casa Sublime',
     modalImage: '/sublime/casasublime.webp',
     hero: {
-      image: '/sublime/casasublime.webp',
+      image: '/sublime/piscina.webp',
       subtitle: 'Pirenópolis, Goiás',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/51765912?guests=1&adults=1&s=67&unique_share_id=5450d026-b60d-400d-b643-c1540a688a51',
@@ -21,11 +21,11 @@ export const houses = {
 
 O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo conforto, praticidade e acolhimento, garantindo uma estadia leve, funcional e verdadeiramente prazerosa para toda a família.`,
       essenceText: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
-      image: '/sublime/detalhequarto.webp',
+      image: '/sublime/detalhesala.webp',
       badge: 'Sinta o aconchego de casa.'
     },
     experiences: [
-      { title: 'Suíte Master', desc: 'Conforto absoluto.', img: '/sublime/suite.webp' },
+      { title: 'Suíte Master', desc: 'Conforto absoluto.', img: '/sublime/detalhequarto.webp' },
       { title: 'Canto Gourmet', desc: 'Sabor e convívio.', img: '/sublime/cozinha.webp' },
       { title: 'Lazer e Sol', desc: 'Um espaço completo para você.', img: '/sublime/piscina.webp' },
       { title: 'Espaço de Jogos', desc: 'Diversão garantida.', img: '/sublime/jogoselazer.webp' },
@@ -53,7 +53,7 @@ O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo confo
     name: 'Casa Essência',
     modalImage: '/essencia/casaessencia.webp',
     hero: {
-      image: '/essencia/casaessencia.webp',
+      image: '/essencia/salaessencia.webp',
       subtitle: 'Refúgio Natural',
       scrollText: 'Deslize para conhecer',
       bookingLink: 'https://www.airbnb.com.br/rooms/1035663779596246726?guests=1&adults=1&s=67&unique_share_id=4e9fc871-1b21-4ab2-86a4-cfa30557e33c',
