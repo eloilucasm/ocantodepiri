@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Magnetic from '../components/Magnetic';
 import BrandSymbol from '../components/BrandSymbol';
 
@@ -311,14 +311,24 @@ const Pirenopolis = () => {
       <div className="h-[50vh] flex flex-col items-center justify-center text-center px-6">
          <p className="text-[#924032] text-xs font-bold uppercase tracking-[0.3em] mb-6">Sua estadia começa aqui</p>
          <h2 className="text-4xl md:text-7xl font-serif text-[#69725d] italic mb-12">Venha viver Piri.</h2>
-         <Magnetic>
-          <button 
-            onClick={() => navigate('/')}
-            className="px-10 py-5 bg-[#924032] text-white rounded-full font-bold uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-xl"
-          >
-            Garanta sua experiência
-          </button>
-         </Magnetic>
+         <div className="flex flex-col md:flex-row gap-6 items-center w-full justify-center">
+             <Magnetic>
+              <button 
+                onClick={() => navigate('/')}
+                className="w-full md:w-[280px] px-6 py-5 bg-[#924032] text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-xl whitespace-nowrap"
+              >
+                Garanta sua experiência
+              </button>
+             </Magnetic>
+             <Magnetic>
+              <Link 
+                to="/pacotes"
+                className="w-full md:w-[280px] px-6 py-5 bg-[#69725d] text-[#f5ece3] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-xl block text-center whitespace-nowrap"
+              >
+                Conhecer pacotes
+              </Link>
+             </Magnetic>
+         </div>
       </div>
 
     </div>

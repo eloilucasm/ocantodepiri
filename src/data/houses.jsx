@@ -17,19 +17,19 @@ export const houses = {
     concept: {
       subtitle: 'O Conceito',
       title: <>Pirenópolis com a liberdade de <br /> <span className="text-[#924032] italic">uma casa e o conforto de um hotel</span>.</>,
-      description: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
+      description: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
+      essenceText: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
 
 O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo conforto, praticidade e acolhimento, garantindo uma estadia leve, funcional e verdadeiramente prazerosa para toda a família.`,
-      essenceText: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
       image: '/sublime/detalhesala.webp',
       badge: 'Sinta o aconchego de casa.'
     },
     experiences: [
       { title: 'Suíte Master', desc: 'Conforto absoluto.', img: '/sublime/detalhequarto.webp' },
-      { title: 'Canto Gourmet', desc: 'Sabor e convívio.', img: '/sublime/cozinha.webp' },
+      { title: 'Cozinha', desc: 'Sabor e convívio.', img: '/sublime/cozinha.webp' },
       { title: 'Lazer e Sol', desc: 'Um espaço completo para você.', img: '/sublime/piscina.webp' },
       { title: 'Espaço de Jogos', desc: 'Diversão garantida.', img: '/sublime/jogoselazer.webp' },
-      { title: 'Sol e Braza', desc: 'Churrasco e bons momentos.', img: '/sublime/churrasqueira.webp' },
+      { title: 'Canto Gourmet', desc: 'Churrasco e bons momentos.', img: '/sublime/churrasqueira.webp' },
       { title: 'Para toda família', desc: 'Espaço para todos.', img: '/sublime/espaçoamplo.webp' },
     ],
     amenities: {
@@ -64,21 +64,20 @@ O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo confo
     concept: {
       subtitle: 'O Conceito',
       title: <>Pirenópolis com a liberdade de <br /> <span className="text-[#924032] italic">uma casa e o conforto de um hotel</span>.</>,
-      description: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
+      description: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
+      essenceText: `São duas casas pensadas para receber famílias e grupos que valorizam ambientes agradáveis, bem estruturados e uma experiência sem preocupações.
 
 O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo conforto, praticidade e acolhimento, garantindo uma estadia leve, funcional e verdadeiramente prazerosa para toda a família.`,
-      essenceText: `Aqui, o hóspede encontra uma estrutura completa de hotelaria: roupas de cama e banho de qualidade, organização, cuidado nos detalhes e a possibilidade de contratar uma auxiliar durante a estadia, seja para o preparo das refeições ou para apoio na limpeza ao longo do período. Tudo é pensado para que o grupo aproveite o tempo junto, sem a rotina de tarefas domésticas.`,
       image: '/essencia/detalhequarto.webp',
       badge: 'Leveza e aconchego.'
     },
     experiences: [
       { title: 'Sala de Estar', desc: 'Um lugar, múltiplos espaços.', img: '/essencia/salaessencia.webp' },
-      { title: 'Detalhes que Encantam', desc: 'Aconchego em cada canto.', img: '/essencia/suitedetalhe.webp' },
-      { title: 'Espaço Gourmet', desc: 'Perfeito para celebrar.', img: '/essencia/gourmet.webp' },
+      { title: 'Suítes acolhedoras', desc: 'Aconchego em cada canto.', img: '/essencia/suitedetalhe.webp' },
+      { title: 'Cozinha', desc: 'Perfeito para celebrar.', img: '/essencia/gourmet.webp' },
       { title: 'Piscina', desc: 'Lazer privativo o ano todo.', img: '/essencia/piscina.webp' },
-      { title: 'Churrasqueira', desc: 'Momentos de sabor e alegria.', img: '/essencia/churrasqueira.webp' },
-      { title: 'Suítes Acolhedoras', desc: 'Descanso absoluto.', img: '/essencia/suite.webp' },
-      { title: 'Quarto Família', desc: 'Espaço para todos.', img: '/essencia/quartofamilia.webp' },
+      { title: 'Espaço Gourmet', desc: 'Momentos de sabor e alegria.', img: '/essencia/churrasqueira.webp' },
+
       { title: 'Lazer e Jogos', desc: 'Diversão para todas as idades.', img: '/essencia/jogoselazer.webp' },
     ],
     amenities: {

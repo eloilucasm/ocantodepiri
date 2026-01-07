@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX, MessageCircle } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 const AudioPlayer = () => {
@@ -79,6 +79,25 @@ const AudioPlayer = () => {
             </motion.div>
         )}
       </AnimatePresence>
+
+      <Magnetic>
+        <a
+          href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 lg:w-14 lg:h-14 bg-[#f5ece3] text-[#924032] rounded-full flex items-center justify-center shadow-lg border border-[#924032]/20 relative overflow-hidden group cursor-pointer mb-2"
+        >
+          <div className="relative z-10">
+            <MessageCircle size={24} />
+          </div>
+          
+          {/* Fill effect on hover */}
+          <div className="absolute inset-0 bg-[#924032] scale-y-0 [@media(hover:hover)]:group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
+          <div className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <MessageCircle size={24} />
+          </div>
+        </a>
+      </Magnetic>
 
       <Magnetic>
       <motion.button
