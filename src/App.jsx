@@ -22,6 +22,9 @@ const Experiences = React.lazy(() => import('./components/Experiences'));
 const Pirenopolis = React.lazy(() => import('./pages/Pirenopolis'));
 const Amenities = React.lazy(() => import('./pages/Amenities'));
 const Packages = React.lazy(() => import('./pages/Packages'));
+const Gallery = React.lazy(() => import('./pages/Gallery'));
+const Testimonials = React.lazy(() => import('./pages/Testimonials'));
+const HomeTestimonials = React.lazy(() => import('./components/HomeTestimonials'));
 
 const colors = {
   cream: '#f5ece3',
@@ -73,8 +76,10 @@ const Layout = () => {
       }, [location.pathname, navigate]);
 
     const menuItems = useMemo(() => [
-        { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') }, 
+        { label: 'A Casa', img: '/cozinha.webp', action: () => handleNavigation('gallery') },
+        { label: 'Galeria', img: '/sublime/detalhesala.webp', action: () => { setIsMenuOpen(false); navigate('/galeria'); } }, 
         { label: 'Pacotes', img: '/sublime/cozinha.webp', action: () => { setIsMenuOpen(false); navigate('/pacotes'); } },
+        { label: 'Depoimentos', img: '/hero.webp', action: () => { setIsMenuOpen(false); navigate('/depoimentos'); } },
         { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
         { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
@@ -263,9 +268,26 @@ const Layout = () => {
                         <Route path="/" element={
                             <>
                                 <Hero showAnimations={!loading} />
+                                
+                                {/* Intro Text Section */}
+                                <section className="py-6 px-6 text-center relative z-20" style={{ backgroundColor: colors.cream }}>
+                                    <motion.h2 
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ duration: 1, ease: "easeOut" }}
+                                        className="text-2xl md:text-3xl lg:text-4xl font-serif italic max-w-4xl mx-auto leading-relaxed"
+                                        style={{ color: colors.deepGreen }}
+                                    >
+                                        Duas casas pensadas sob medida para atender <br className="hidden md:block" />
+                                        <span className="text-[#924032]">você, sua família ou grupo de amigos</span>.
+                                    </motion.h2>
+                                </section>
+
                                 <Concept />
                                 <Suspense fallback={<div className="h-96" />}>
                <Experiences />
+               <HomeTestimonials />
             </Suspense>
                                 {/* Chamada para Ação */}
                                 <section className="py-40 text-center px-6 relative overflow-hidden" style={{ backgroundColor: colors.cream }}>
@@ -321,22 +343,32 @@ const Layout = () => {
                                 </section>
                             </>
                         } />
-                        <Route path="/pirenopolis" element={
-            <Suspense fallback={null}>
-              <Pirenopolis />
-            </Suspense>
-          } />
-          <Route path="/amenidades" element={
-            <Suspense fallback={null}>
-              <Amenities />
-            </Suspense>
-          } />
-          <Route path="/pacotes" element={
-            <Suspense fallback={null}>
-              <Packages />
-            </Suspense>
-          } />
-                    </Routes>
+                                      <Route path="/pirenopolis" element={
+                            <Suspense fallback={null}>
+                                <Pirenopolis onMenuOpen={() => setIsMenuOpen(true)} />
+                            </Suspense>
+                        } />
+                        <Route path="/amenidades" element={
+                            <Suspense fallback={null}>
+                                <Amenities onMenuOpen={() => setIsMenuOpen(true)} />
+                            </Suspense>
+                        } />
+                        <Route path="/pacotes" element={
+                            <Suspense fallback={null}>
+                                <Packages onMenuOpen={() => setIsMenuOpen(true)} />
+                            </Suspense>
+                        } />
+                        <Route path="/galeria" element={
+                            <Suspense fallback={null}>
+                                <Gallery onMenuOpen={() => setIsMenuOpen(true)} />
+                            </Suspense>
+                        } />
+                        <Route path="/depoimentos" element={
+                            <Suspense fallback={null}>
+                                <Testimonials onMenuOpen={() => setIsMenuOpen(true)} />
+                            </Suspense>
+                        } />
+        </Routes>
                     </React.Suspense>
                 </div>
 

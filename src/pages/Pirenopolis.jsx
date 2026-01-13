@@ -101,7 +101,7 @@ const gastronomy = [
   }
 ];
 
-const Pirenopolis = () => {
+const Pirenopolis = ({ onMenuOpen }) => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -113,22 +113,34 @@ const Pirenopolis = () => {
     <div ref={containerRef} className="bg-[#f5ece3] min-h-dvh selection:bg-[#924032] selection:text-white pb-32">
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center pointer-events-none">
-        <Magnetic>
-          <button 
-            onClick={() => navigate('/')}
-            className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-[#924032] text-[#69725d] hover:bg-[#69725d] hover:text-white transition-all duration-300"
-          >
-            <ArrowLeft size={20} />
-          </button>
-        </Magnetic>
-        <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="pointer-events-auto mix-blend-difference"
-        >
-            <BrandSymbol className="h-10 w-auto" />
-        </motion.div>
+      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 grid grid-cols-3 items-center pointer-events-none">
+        <div className="flex justify-start">
+            <Magnetic>
+                <button 
+                    onClick={() => navigate('/')}
+                    className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-[#924032] text-[#69725d] hover:bg-[#69725d] hover:text-white transition-all duration-300 shadow-sm"
+                >
+                    <ArrowLeft size={20} />
+                </button>
+            </Magnetic>
+        </div>
+
+        <div className="flex justify-center px-4">
+            <div className="pointer-events-auto scale-90 md:scale-100 opacity-0 pointer-events-none">
+                {/* Space for HouseSwitcher if it were here */}
+            </div>
+        </div>
+
+        <div className="flex justify-end">
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="pointer-events-auto cursor-pointer mix-blend-difference"
+                onClick={onMenuOpen}
+            >
+                <BrandSymbol className="h-10 w-auto" />
+            </motion.div>
+        </div>
       </nav>
 
       {/* Hero Section */}

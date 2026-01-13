@@ -28,7 +28,7 @@ const Hero = ({ showAnimations }) => {
                 src={currentHouse.hero.image} 
                 fetchpriority="high"
                 loading="eager"
-                className="w-full h-full object-cover absolute inset-0 animate-ken-burns" 
+                className="w-full h-full object-cover absolute inset-0 animate-ken-burns scale-90" 
                 alt={currentHouse.name}
             />
           </AnimatePresence>
@@ -85,7 +85,7 @@ const Hero = ({ showAnimations }) => {
             initial={{ opacity: 0 }}
             animate={showAnimations ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 1.8 }}
-            className="mt-16 flex flex-col items-center gap-4"
+            className="mt-28 md:mt-16 flex flex-col items-center gap-4"
         >
             <div className="w-[1px] h-24 bg-[#924032] origin-top scale-y-100 animate-pulse" />
             <span className="text-[9px] uppercase tracking-[0.3em] vertical-rl">{currentHouse.hero.scrollText}</span>

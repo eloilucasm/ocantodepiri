@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Check, Clock, Users, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BrandSymbol from '../components/BrandSymbol';
@@ -13,7 +13,7 @@ const colors = {
 };
 
 const Section = ({ title, children, className = "" }) => (
-  <motion.section 
+  <Motion.section 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-10%" }}
@@ -27,7 +27,7 @@ const Section = ({ title, children, className = "" }) => (
       </h3>
     )}
     {children}
-  </motion.section>
+  </Motion.section>
 );
 
 const PackageCard = ({ title, price, description, features, recommended, delay = 0, theme = 'neutral' }) => {
@@ -61,7 +61,7 @@ const PackageCard = ({ title, price, description, features, recommended, delay =
     const currentTheme = themeStyles[theme];
 
   return (
-    <motion.div 
+    <Motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -112,11 +112,11 @@ const PackageCard = ({ title, price, description, features, recommended, delay =
         >
             Consultar Disponibilidade
         </a>
-    </motion.div>
+    </Motion.div>
   );
 };
     
-const Packages = () => {
+const Packages = ({ onMenuOpen }) => {
     const navigate = useNavigate();
     const { currentHouse, currentHouseId } = useHouse();
 
@@ -139,25 +139,35 @@ const Packages = () => {
         <div className="min-h-screen pt-32 pb-20 px-6 md:px-12 lg:px-24" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
              {/* Navigation Controls */}
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-start pointer-events-none">
-                <button 
-                    onClick={() => navigate('/')}
-                    className="w-12 h-12 flex items-center justify-center rounded-full bg-[#924032] text-[#f5ece3] pointer-events-auto hover:scale-110 transition-transform shadow-lg cursor-pointer"
-                >
-                    <X size={24} />
-                </button>
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 grid grid-cols-3 items-center pointer-events-none">
+                <div className="flex justify-start">
+                    <button 
+                        onClick={() => navigate('/')}
+                        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#924032] text-[#f5ece3] pointer-events-auto hover:scale-110 transition-transform shadow-lg cursor-pointer"
+                    >
+                        <X size={24} />
+                    </button>
+                </div>
+
+                <div className="flex justify-center">
+                    <div className="scale-90 md:scale-100 opacity-0 pointer-events-none"> {/* Hidden anchor for grid balance if needed, but we have HouseSwitcher below the header in this page */}
+                        {/* On this page, HouseSwitcher is below the header, but for consistency we use the grid */}
+                    </div>
+                </div>
                 
-                <div 
-                    onClick={() => navigate('/')}
-                    className="pointer-events-auto cursor-pointer hover:scale-110 transition-transform drop-shadow-lg"
-                >
-                    <BrandSymbol className="h-12 w-auto text-[#924032]" />
+                <div className="flex justify-end">
+                    <div 
+                        onClick={onMenuOpen}
+                        className="pointer-events-auto cursor-pointer hover:scale-110 transition-transform drop-shadow-lg"
+                    >
+                        <BrandSymbol className="h-12 w-auto text-[#924032]" />
+                    </div>
                 </div>
             </nav>
 
             {/* Header */}
             <header className="max-w-4xl mx-auto text-center mb-24 md:mb-32">
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -169,9 +179,9 @@ const Packages = () => {
                         Estrutura de <span className="italic text-[#924032]">Pacotes</span>
                     </h1>
                     <p className="text-sm uppercase tracking-widest opacity-60 mb-8">{currentHouse.name}</p>
-                </motion.div>
+                </Motion.div>
 
-                <motion.div 
+                <Motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 1 }}
@@ -179,14 +189,14 @@ const Packages = () => {
                 >
                     <div className="flex items-center gap-2">
                         <Clock size={16} />
-                        <span>Período: 3 Dias</span>
+                        <span>Período: 2 Diárias</span>
                     </div>
                     <div className="w-px h-4 bg-[#69725d]/20 hidden md:block"></div>
                     <div className="flex items-center gap-2">
                         <Users size={16} />
                         <span>Capacidade: Até 10 Hóspedes</span>
                     </div>
-                </motion.div>
+                </Motion.div>
             </header>
 
             <div className="max-w-7xl mx-auto">
@@ -197,6 +207,9 @@ const Packages = () => {
                     </p>
                     <p className="italic text-[#924032]">
                         O pacote escolhido determina o cuidado que acompanha a sua estadia, sem nunca abrir mão da exclusividade e da privacidade de viver a casa como se fosse sua.
+                    </p>
+                    <p className="text-xs mt-8 opacity-60">
+                        *valores referentes a feriados e datas comemorativas deverão se consultados com a anfitriã via WhatsApp
                     </p>
                 </Section>
 

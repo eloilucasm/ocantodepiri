@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useHouse } from '../context/HouseContext';
 
 const ExperienceCard = React.memo(({ item }) => {
@@ -32,8 +33,14 @@ const ExperienceCard = React.memo(({ item }) => {
 
 const Experiences = () => {
   const carousel = useRef(null);
-  const { currentHouse } = useHouse();
+  const navigate = useNavigate();
+  const { currentHouse, switchHouse } = useHouse();
   const items = currentHouse.experiences;
+
+  const handleGalleryNavigation = (houseId) => {
+    switchHouse(houseId);
+    navigate('/galeria');
+  };
 
   return (
     <section id="gallery" className="bg-[#69725d] py-32 md:py-48 text-[#f5ece3] overflow-hidden">
@@ -46,9 +53,21 @@ const Experiences = () => {
             <p className="text-lg opacity-70 border-l-2 border-[#bebe53] pl-6 mb-8 max-w-md">
                 Curamos cada espaço para refletir a história local, misturando o rústico com a elegância moderna.
             </p>
-            <div className="flex items-center gap-4 text-[#bebe53]">
-                 <span className="text-[10px] md:text-xs uppercase tracking-widest">Arraste para explorar</span>
-                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 animate-pulse" />
+            <div className="flex flex-wrap items-center gap-4">
+                 <button 
+                  onClick={() => handleGalleryNavigation('casa1')}
+                  className="group flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-[#bebe53] text-[#f5ece3] hover:text-[#69725d] border border-[#bebe53]/30 rounded-full transition-all duration-300"
+                 >
+                    <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold">Veja mais fotos da Casa Sublime</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                 </button>
+                 <button 
+                  onClick={() => handleGalleryNavigation('casa-jardim')}
+                  className="group flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-[#bebe53] text-[#f5ece3] hover:text-[#69725d] border border-[#bebe53]/30 rounded-full transition-all duration-300"
+                 >
+                    <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold">Veja mais fotos da Casa Essência</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                 </button>
             </div>
             </div>
         </div>

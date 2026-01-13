@@ -30,7 +30,7 @@ const Concept = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section ref={conceptRef} className="py-16 md:py-48 px-6 lg:px-24 max-w-7xl mx-auto">
+    <section ref={conceptRef} className="py-12 md:pb-48 md:pt-24 px-6 lg:px-24 max-w-7xl mx-auto">
         <EssenceModal 
             isOpen={isModalOpen} 
             onClose={() => setIsModalOpen(false)} 
@@ -59,7 +59,7 @@ const Concept = () => {
                 className="flex items-center gap-4 group text-sm font-bold uppercase tracking-widest outline-none" 
                 data-cursor="hover"
             >
-                <span className="border-b-2 border-[#924032] pb-1">Conheça nossa essência</span>
+                <span className="border-b-2 border-[#924032] pb-1">Nosso jeito de ser</span>
                 <div className="bg-[#924032] p-2 rounded-full text-white group-hover:rotate-45 transition-transform duration-500">
                 <ArrowDownRight size={16} />
                 </div>
