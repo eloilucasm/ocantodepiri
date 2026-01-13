@@ -208,9 +208,6 @@ const Packages = ({ onMenuOpen }) => {
                     <p className="italic text-[#924032]">
                         O pacote escolhido determina o cuidado que acompanha a sua estadia, sem nunca abrir mão da exclusividade e da privacidade de viver a casa como se fosse sua.
                     </p>
-                    <p className="text-xs mt-8 opacity-60">
-                        *valores referentes a feriados e datas comemorativas deverão se consultados com a anfitriã via WhatsApp
-                    </p>
                 </Section>
 
                 {/* Packages Grid */}
@@ -271,6 +268,9 @@ const Packages = ({ onMenuOpen }) => {
                             delay={0.3}
                         />
                     </div>
+                    <p className="text-xs mt-8 text-center opacity-60">
+                        *valores referentes a feriados e datas comemorativas deverão se consultados com a anfitriã via WhatsApp
+                    </p>
                 </Section>
 
                 {/* Details Grid */}
