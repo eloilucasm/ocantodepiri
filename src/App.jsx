@@ -279,8 +279,8 @@ const Layout = () => {
                                         className="text-2xl md:text-3xl lg:text-4xl font-serif italic max-w-4xl mx-auto leading-relaxed"
                                         style={{ color: colors.deepGreen }}
                                     >
-                                        Duas casas pensadas sob medida para atender <br className="hidden md:block" />
-                                        <span className="text-[#924032]">você, sua família ou grupo de amigos</span>.
+                                        Duas casas pensadas sob medida <br className="hidden md:block" />
+                                        para atender <span className="text-[#924032]">você e sua família</span>.
                                     </motion.h2>
                                 </section>
 
