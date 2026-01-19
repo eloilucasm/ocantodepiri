@@ -123,7 +123,7 @@ const Packages = ({ onMenuOpen }) => {
     const packagesPricing = {
         casa1: { // Casa Sublime
             basic: "3.200",
-            comfort: "3.600",
+            comfort: "3.700",
             experience: "4.200"
         },
         'casa-jardim': { // Casa Essência
