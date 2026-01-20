@@ -72,6 +72,9 @@ const Layout = () => {
               navigate('/pirenopolis');
           } else if (target === 'amenidades') {
               navigate('/amenidades');
+          } else if (target === 'regras') {
+              setIsMenuOpen(false); 
+              navigate('/amenidades', { state: { openPolicy: true } });
           }
       }, [location.pathname, navigate]);
 
@@ -81,6 +84,7 @@ const Layout = () => {
         { label: 'Pacotes', img: '/sublime/cozinha.webp', action: () => { setIsMenuOpen(false); navigate('/pacotes'); } },
         { label: 'Depoimentos', img: '/hero.webp', action: () => { setIsMenuOpen(false); navigate('/depoimentos'); } },
         { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
+        { label: 'Regras da Casa', img: '/sublime/mesa.webp', action: () => handleNavigation('regras') },
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
         { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
     ], [handleNavigation, navigate]);
@@ -155,27 +159,29 @@ const Layout = () => {
 
                 {/* Navegação - Only show on Home */}
                 {location.pathname === '/' && (
-                <nav className={`fixed w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 flex justify-between items-center gap-2 md:gap-4 ${scrolled ? 'bg-[#f5ece3]/95 py-3 shadow-sm' : 'bg-transparent'}`}>
+                <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 px-4 py-4 md:px-12 grid grid-cols-3 items-center ${scrolled ? 'bg-[#f5ece3]/95 py-3 shadow-sm' : 'bg-transparent'}`}>
                     
-                    {/* Logo - min-w-0 to prevent flex squash */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex items-center gap-2 group cursor-pointer flex-shrink-0 min-w-0"
-                        data-cursor="hover"
-                        onClick={() => navigate('/')}
-                    >
-                        <BrandSymbol className="h-8 md:h-12 w-auto" />
-                    </motion.div>
+                    {/* Logo - Align Start */}
+                    <div className="flex justify-start">
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="flex items-center gap-2 group cursor-pointer flex-shrink-0 min-w-0"
+                            data-cursor="hover"
+                            onClick={() => navigate('/')}
+                        >
+                            <BrandSymbol className="h-8 md:h-12 w-auto" />
+                        </motion.div>
+                    </div>
 
-                    {/* House Switcher - Centered */}
-                    <div className="flex justify-center order-2 md:order-none scale-90 md:scale-100">
+                    {/* House Switcher - Align Center */}
+                    <div className="flex justify-center scale-90 md:scale-100">
                         <HouseSwitcher />
                     </div>
                     
-                    {/* Menu Button */}
-                    <div className="order-3">
+                    {/* Menu Button - Align End */}
+                    <div className="flex justify-end">
                         <Magnetic>
                             <motion.button 
                                 initial={{ opacity: 0, x: 20 }}
@@ -223,7 +229,7 @@ const Layout = () => {
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
                                 transition={{ delay: 0.3 + (i * 0.1), duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                                className="text-4xl md:text-8xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-[#bebe53] transition-all duration-500 w-fit"
+                                className="text-4xl md:text-7xl font-serif italic cursor-pointer hover:translate-x-6 hover:text-[#bebe53] transition-all duration-500 w-fit"
                                 data-cursor="hover"
                                 onClick={item.action}
                                 >

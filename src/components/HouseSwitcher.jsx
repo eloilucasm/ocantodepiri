@@ -11,7 +11,7 @@ const HouseSwitcher = ({ activeId, onSwitch, isModal = false }) => {
   const isPending = onSwitch ? false : globalTransitioning;
 
   return (
-    <div className={`flex backdrop-blur-md rounded-full p-0.5 md:p-1 border pointer-events-auto transition-colors duration-300
+    <div className={`inline-flex backdrop-blur-md rounded-full p-0.5 md:p-1 border pointer-events-auto transition-colors duration-300
       ${isModal 
         ? 'bg-[#924032]/5 border-[#924032]/20' 
         : 'bg-white/10 md:bg-white/10 border-[#924032]/20'

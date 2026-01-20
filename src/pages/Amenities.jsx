@@ -21,7 +21,7 @@ import {
   Users
 } from 'lucide-react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useHouse } from '../context/HouseContext';
 import Magnetic from '../components/Magnetic';
 import BrandSymbol from '../components/BrandSymbol';
@@ -257,12 +257,18 @@ const HostingPolicyModal = React.memo(({ isOpen, onClose }) => {
 
 const Amenities = ({ onMenuOpen }) => {
   const navigate = useNavigate();
+  const location = useLocation(); // hook from react-router-dom
   const { currentHouse } = useHouse();
   const [isPolicyOpen, setIsPolicyOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (location.state?.openPolicy) {
+      setIsPolicyOpen(true);
+      // Clear the state so it doesn't reopen on refresh/back
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location.state, location.pathname, navigate]);
 
   const amenitiesList = useMemo(() => {
      return Object.entries(currentHouse.amenities || {});
