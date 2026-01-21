@@ -15,6 +15,8 @@ import Magnetic from './components/Magnetic';
 import { HouseProvider, useHouse } from './context/HouseContext';
 import HouseSwitcher from './components/HouseSwitcher';
 import { Suspense } from 'react';
+import MetaPixel from './components/MetaPixel';
+import { trackPixelEvent } from './utils/pixel';
 
 // Lazy Load Heavy Components to reduce initial bundle
 const BookingModal = React.lazy(() => import('./components/BookingModal'));
@@ -55,6 +57,21 @@ const Layout = () => {
 
     const handleCloseBooking = useCallback(() => setIsBookingOpen(false), []);
 
+    const handleOpenBooking = useCallback(() => {
+        setIsBookingOpen(true);
+        trackPixelEvent('InitiateCheckout', {
+            content_name: 'Reserva',
+            house: currentHouse.name
+        });
+    }, [currentHouse.name]);
+
+    const handleWhatsAppClick = useCallback(() => {
+        trackPixelEvent('Contact', {
+            method: 'WhatsApp',
+            house: currentHouse.name
+        });
+    }, [currentHouse.name]);
+
     const handleNavigation = useCallback((target) => {
           setIsMenuOpen(false);
           if (target === 'gallery') {
@@ -86,8 +103,8 @@ const Layout = () => {
         { label: 'Amenidades', img: '/piscina2.webp', action: () => handleNavigation('amenidades') }, 
         { label: 'Regras da Casa', img: '/sublime/mesa.webp', action: () => handleNavigation('regras') },
         { label: 'Pirenópolis', img: '/hero.webp', action: () => handleNavigation('pirenopolis') }, 
-        { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(() => setIsBookingOpen(true), 800); } }
-    ], [handleNavigation, navigate]);
+        { label: 'Reservar', img: '/suitemaster.webp', action: () => { setIsMenuOpen(false); setTimeout(handleOpenBooking, 800); } }
+    ], [handleNavigation, handleOpenBooking, navigate]);
 
     // Auto-rotate images when menu is open
     useEffect(() => {
@@ -146,6 +163,7 @@ const Layout = () => {
         <div className="min-h-dvh font-sans selection:bg-[#924032] selection:text-white overflow-x-hidden" style={{ backgroundColor: colors.cream, color: colors.deepGreen }}>
             
             {/* Components */}
+            <MetaPixel />
             <Preloader onComplete={() => setLoading(false)} />
             {/* <NoiseOverlay /> */}
             <AudioPlayer />
@@ -241,7 +259,7 @@ const Layout = () => {
 
                         <div className="flex flex-col md:flex-row gap-8 text-xs uppercase tracking-widest border-t border-white/20 pt-8">
                             <a href={currentHouse.hero.instaLink} target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">Instagram</a>
-                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">WhatsApp</a>
+                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick} className="hover:opacity-60 transition-opacity" data-cursor="hover">WhatsApp</a>
                             <a href={currentHouse.hero.mapLink} target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity" data-cursor="hover">Localização</a>
                         </div>
                         </div>
@@ -339,6 +357,7 @@ const Layout = () => {
                                             href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
+                                            onClick={handleWhatsAppClick}
                                             className="w-full md:w-[260px] px-6 py-6 border border-[#924032] text-[#924032] rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-[#924032] hover:text-white transition-all duration-500 text-center whitespace-nowrap" 
                                             data-cursor="hover"
                                         >
@@ -394,7 +413,7 @@ const Layout = () => {
                         <div className="space-y-6">
                             <h5 className="text-[10px] uppercase tracking-widest font-black opacity-40">Contato</h5>
                             <div className="space-y-6 text-sm font-bold tracking-tight">
-                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-[#924032] cursor-pointer group transition-colors" data-cursor="hover">
+                            <a href="https://api.whatsapp.com/send/?phone=5562996558022&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick} className="flex items-center gap-4 hover:text-[#924032] cursor-pointer group transition-colors" data-cursor="hover">
                                 <div className="w-10 h-10 rounded-full border border-[#924032]/20 flex items-center justify-center text-[#924032] group-hover:bg-[#924032] group-hover:text-white transition-colors">
                                     <Phone size={18} />
                                 </div>
