@@ -73,7 +73,7 @@ O conceito do Ô Canto de Piri é simples e bem definido: oferecer máximo confo
       "Quarto e lavanderia": [
         "Cabides",
         "Roupa de cama",
-        "Cobertores e travesseiros extras",
+        "Cobertores e travesseiros",
         "Toalhas de banho",
         "Blackout nas cortinas",
         "Ferro de passar",

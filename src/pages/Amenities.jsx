@@ -104,14 +104,14 @@ const HostingPolicyModal = React.memo(({ isOpen, onClose }) => {
         'Residencial familiar: evite som alto ou comportamentos incômodos.',
         'Multas da vizinhança serão repassadas integralmente.'
       ],
-      note: 'Possuímos som Bluetooth integrado de alta fidelidade. Não é permitido o uso de equipamentos de som externos.'
+      note: 'Possuímos sonorização ambiente integrado de alta fidelidade com bluetooth. Proibido uso de outros aparelhos de som.'
     },
     cleaning: {
       title: '4. Limpeza e Conservação',
       rules: [
         'Recolha o lixo diariamente e deposite na lixeira externa.',
         'Taxa cobre higienização geral; favor não deixar louça suja na pia.',
-        'Acidentes acontecem: avise-nos imediatamente se algo quebrar.',
+        'Acidentes acontecem: avise-nos imediatamente se algo quebrar, o item ou objeto deverá ser reposto pelo hóspede.',
         'Toalhas brancas não devem ser usadas para sapatos ou maquiagem.'
       ]
     },
